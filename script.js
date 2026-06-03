@@ -85,11 +85,8 @@ const state = {
             ]
         }
         {
-            id: 'c10', name: '其他', emoji: '📚',
+            id: 'c10', name: '其他', emoji: '🎲',
             dishes: [
-                { name: '其他', img: '✨', tag: '自定义', tagType: 'free', desc: '想让大厨做点别的？在这里备注说明吧', count: 0 }
-                { name: '生气了，需要哄', img: '💆', tag: '呵护', tagType: 'love', desc: '想咬人的来', count: 0 },
-                { name: '需要静一静', img: 'images/calm.png', tag: '呵护', tagType: 'love', count: 0 },
                 { name: '其他', img: '✨', tag: '自定义', tagType: 'free', desc: '有别的充电方式？', count: 0 }
             ]
         }
@@ -406,6 +403,6 @@ document.getElementById('share-btn').onclick = () => {
     });
 };
 
-// 初始化渲染
+// 初始化渲染 (v1.0.4 - Last Sync: 2026-06-03)
 renderSidebar();
 renderMain();
