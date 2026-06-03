@@ -1,0 +1,421 @@
+/* 基础重置 */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    background: #FAF8FF;
+    font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+    overflow: hidden;
+    height: 100vh;
+}
+
+.app {
+    --brand: #8B5CF6;
+    --brand-light: #F3EFFE;
+    --brand-mid: #C4B5FD;
+    --star: #F59E0B;
+    --bg: #FAF8FF;
+    --text1: #1E1B2E;
+    --text2: #6B6880;
+    --text3: #AAA7BB;
+    
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background: var(--bg);
+}
+
+/* 顶部栏 */
+.topbar {
+    background: #fff;
+    padding: 14px 16px 0;
+    border-bottom: 0.5px solid #EDE8FF;
+}
+.topbar-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+.shop-name {
+    font-size: 18px;
+    font-weight: bold;
+    color: var(--text1);
+}
+.shop-sub {
+    font-size: 11px;
+    color: var(--text2);
+    margin-top: 2px;
+}
+.open-badge {
+    background: #F3EFFE;
+    color: #7C3AED;
+    font-size: 11px;
+    font-weight: 500;
+    padding: 3px 10px;
+    border-radius: 20px;
+    border: 0.5px solid #C4B5FD;
+}
+.tab-row {
+    display: flex;
+    gap: 6px;
+    padding-bottom: 10px;
+}
+.tab-pill {
+    padding: 5px 13px;
+    border-radius: 20px;
+    font-size: 12px;
+    color: var(--text2);
+    border: 0.5px solid #E4DAFF;
+    background: #fff;
+}
+.tab-pill.on {
+    background: var(--brand);
+    color: #fff;
+    border-color: var(--brand);
+}
+
+/* 布局控制 */
+.layout {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+}
+.sidebar {
+    width: 80px;
+    background: #fff;
+    border-right: 0.5px solid #EDE8FF;
+    height: 100%;
+    overflow-y: auto;
+}
+.cat-item {
+    padding: 15px 6px;
+    text-align: center;
+    font-size: 11px;
+    color: var(--text2);
+    position: relative;
+    line-height: 1.4;
+    cursor: pointer;
+}
+.cat-item.active {
+    color: var(--brand);
+    font-weight: bold;
+    background-color: var(--brand-light);
+}
+.cat-item.active::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 3px;
+    height: 22px;
+    background: var(--brand);
+    border-radius: 0 3px 3px 0;
+}
+.cat-emoji {
+    font-size: 16px;
+    display: block;
+    margin-bottom: 2px;
+}
+
+.main {
+    flex: 1;
+    height: 100%;
+    padding-bottom: 80px;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+}
+.cat-header {
+    padding: 14px 12px 6px;
+    font-size: 13px;
+    font-weight: bold;
+    color: var(--text1);
+    position: sticky;
+    top: 0;
+    background: var(--bg);
+    z-index: 5;
+}
+.cat-count {
+    font-size: 11px;
+    color: var(--text3);
+    font-weight: 400;
+    margin-left: 4px;
+}
+
+/* 菜品卡片 */
+.dish {
+    display: flex;
+    gap: 10px;
+    padding: 10px;
+    background: #fff;
+    margin: 0 8px 6px;
+    border-radius: 14px;
+    border: 0.5px solid #EDE8FF;
+    transition: all .15s;
+    cursor: pointer;
+}
+.dish.bump {
+    transform: scale(0.95);
+}
+.dish-img {
+    width: 66px;
+    height: 66px;
+    border-radius: 10px;
+    background: var(--brand-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    position: relative;
+    overflow: hidden;
+}
+.dish-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.sold-mask {
+    position: absolute;
+    inset: 0;
+    background: rgba(255,255,255,.7);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    color: var(--text3);
+    font-weight: 500;
+}
+.dish-body {
+    flex: 1;
+    min-width: 0;
+}
+.dish-name {
+    font-size: 13px;
+    font-weight: bold;
+    color: var(--text1);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    flex-wrap: wrap;
+    margin-bottom: 2px;
+}
+.pill {
+    font-size: 9px;
+    padding: 1px 6px;
+    border-radius: 10px;
+    font-weight: 500;
+}
+.p-hot { background: #FEF3C7; color: #92400E; }
+.p-love { background: #FCE7F3; color: #9D174D; }
+.p-new { background: #D1FAE5; color: #065F46; }
+.p-rare { background: #EDE9FE; color: #5B21B6; }
+.p-free { background: #DBEAFE; color: #1E40AF; }
+
+.stars-row {
+    font-size: 10px;
+    color: var(--star);
+    margin-bottom: 4px;
+}
+.dish-desc {
+    font-size: 11px;
+    color: var(--text2);
+    line-height: 1.4;
+    margin-bottom: 6px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+.dish-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.price-tag {
+    color: var(--brand);
+    font-weight: bold;
+    font-size: 15px;
+}
+.price-unit {
+    font-size: 10px;
+    margin-left: 1px;
+}
+
+/* 步进器 */
+.stepper {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.s-btn {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    border: 0.5px solid var(--brand-mid);
+    background: #fff;
+    color: var(--brand);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    cursor: pointer;
+}
+.s-btn.hide {
+    visibility: hidden;
+}
+.s-num {
+    font-size: 13px;
+    font-weight: 500;
+    min-width: 14px;
+    text-align: center;
+}
+.add-circle {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: var(--brand);
+    color: #fff;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+/* 底部栏 */
+.bottombar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 70px;
+    background: #fff;
+    border-top: 0.5px solid #EDE8FF;
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+    gap: 12px;
+    z-index: 100;
+}
+.cart-wrap {
+    position: relative;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.bdg {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: #EF4444;
+    color: #fff;
+    font-size: 10px;
+    font-weight: bold;
+    padding: 2px 5px;
+    border-radius: 10px;
+    min-width: 16px;
+    text-align: center;
+    display: none;
+}
+.bdg.show {
+    display: block;
+}
+.mid-btns {
+    flex: 1;
+    display: flex;
+    gap: 6px;
+}
+.rand-btn, .invite-btn {
+    flex: 1;
+    height: 38px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 500;
+    border: 0.5px solid #E4DAFF;
+    background: #fff;
+    color: var(--text1);
+    cursor: pointer;
+}
+.order-btn {
+    width: 90px;
+    height: 38px;
+    background: var(--text3);
+    color: #fff;
+    border-radius: 20px;
+    border: none;
+    font-weight: bold;
+    font-size: 14px;
+    transition: all .2s;
+    cursor: not-allowed;
+}
+.order-btn.on {
+    background: var(--brand);
+    cursor: pointer;
+}
+
+/* 弹窗样式 */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 200;
+}
+.modal-overlay.show {
+    display: flex;
+}
+.modal {
+    background: #fff;
+    width: 85%;
+    max-width: 320px;
+    border-radius: 20px;
+    padding: 20px;
+    animation: modalSlideUp 0.3s ease-out;
+}
+@keyframes modalSlideUp {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+.modal h3 {
+    text-align: center;
+    margin-bottom: 15px;
+    color: var(--text1);
+}
+.modal-content {
+    font-size: 14px;
+    color: var(--text2);
+    line-height: 1.6;
+    margin-bottom: 20px;
+    white-space: pre-line;
+}
+.modal-footer {
+    display: flex;
+    gap: 10px;
+}
+.modal-footer button {
+    flex: 1;
+    height: 40px;
+    border-radius: 20px;
+    border: none;
+    font-weight: 500;
+    cursor: pointer;
+}
+#modal-cancel {
+    background: #F3F4F6;
+    color: #6B7280;
+}
+#modal-confirm {
+    background: var(--brand);
+    color: #fff;
+}

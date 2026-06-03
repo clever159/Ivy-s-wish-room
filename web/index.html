@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>💜 蛋蛋专属小馆</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app" class="app">
+        <!-- 顶部栏 -->
+        <header class="topbar">
+            <div class="topbar-row">
+                <div>
+                    <h1 class="shop-name">💜 蛋蛋专属小馆</h1>
+                    <p class="shop-sub">只为你开 · 随叫随到 · ⭐ 永远5.0</p>
+                </div>
+                <div class="open-badge">为你接单中</div>
+            </div>
+            <nav class="tab-row">
+                <div class="tab-pill on">点单</div>
+                <div class="tab-pill">修改</div>
+                <div class="tab-pill">历史订单</div>
+            </nav>
+        </header>
+
+        <!-- 主体布局 -->
+        <div class="layout">
+            <!-- 左侧侧边栏 -->
+            <aside class="sidebar" id="sidebar">
+                <!-- 动态渲染分类 -->
+            </aside>
+
+            <!-- 右侧菜品列表 -->
+            <main class="main" id="main-content">
+                <!-- 动态渲染菜品 -->
+            </main>
+        </div>
+
+        <!-- 底部栏 -->
+        <footer class="bottombar">
+            <div class="cart-wrap">
+                <span style="font-size:24px;">🛒</span>
+                <div id="total-badge" class="bdg">0</div>
+            </div>
+            <div class="mid-btns">
+                <button class="rand-btn" id="rand-btn">随机选菜</button>
+                <button class="invite-btn" id="share-btn">分享链接</button>
+            </div>
+            <button class="order-btn" id="submit-btn">下单 ↗</button>
+        </footer>
+    </div>
+
+    <!-- 弹窗模板 -->
+    <div id="modal-overlay" class="modal-overlay">
+        <div class="modal">
+            <h3 id="modal-title"></h3>
+            <div id="modal-content" class="modal-content"></div>
+            <div class="modal-footer">
+                <button id="modal-cancel">再想想</button>
+                <button id="modal-confirm">呼叫大厨</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
