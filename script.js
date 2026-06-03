@@ -7,7 +7,6 @@ const state = {
             id: 'c1', name: '注意！', emoji: '📢',
             dishes: [
                 { name: '注意！不可贪心！想一下能不能吃！', img: '⚠️', tag: '店规', tagType: 'rare', desc: '大厨会尽力完成，但保留因懒取消的权利 🫡', isRule: true, count: 0 },
-                { name: '其他', img: '✨', tag: '自定义', tagType: 'free', desc: '想让大厨做点别的？在这里备注说明吧', count: 0 }
             ]
         },
         {
@@ -81,10 +80,20 @@ const state = {
                 { name: '一起自习', img: '📖', tag: '高效', tagType: 'free', desc: '', count: 0 },
                 { name: '不开心', img: '🧠', tag: 'emo', tagType: 'rare', desc: '找我聊天吧', count: 0 },
                 { name: '生气了，需要哄', img: '💆', tag: '呵护', tagType: 'love', desc: '想咬人的来', count: 0 },
+                { name: '需要静一静', img: './images/quiet.png?v=1713', tag: '呵护', tagType: 'love', count: 0 },
+                { name: '其他', img: '✨', tag: '自定义', tagType: 'free', desc: '有别的充电方式？', count: 0 }
+            ]
+        }
+        {
+            id: 'c10', name: '其他', emoji: '📚',
+            dishes: [
+                { name: '其他', img: '✨', tag: '自定义', tagType: 'free', desc: '想让大厨做点别的？在这里备注说明吧', count: 0 }
+                { name: '生气了，需要哄', img: '💆', tag: '呵护', tagType: 'love', desc: '想咬人的来', count: 0 },
                 { name: '需要静一静', img: 'images/calm.png', tag: '呵护', tagType: 'love', count: 0 },
                 { name: '其他', img: '✨', tag: '自定义', tagType: 'free', desc: '有别的充电方式？', count: 0 }
             ]
         }
+            
     ]
 };
 
