@@ -1,0 +1,344 @@
+page {
+  background: #FAF8FF;
+  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+}
+
+div, view, text {
+  box-sizing: border-box;
+}
+
+/* 全局变量（原 :root） */
+.app {
+  --brand: #8B5CF6;
+  --brand-light: #F3EFFE;
+  --brand-mid: #C4B5FD;
+  --star: #F59E0B;
+  --bg: #FAF8FF;
+  --text1: #1E1B2E;
+  --text2: #6B6880;
+  --text3: #AAA7BB;
+  
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background: var(--bg);
+}
+
+/* 顶部栏 */
+.topbar {
+  background: #fff;
+  padding: 14px 16px 0;
+  border-bottom: 0.5px solid #EDE8FF;
+}
+.topbar-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+.shop-name {
+  font-size: 17px;
+  font-weight: bold;
+  color: var(--text1);
+}
+.shop-sub {
+  font-size: 11px;
+  color: var(--text2);
+  margin-top: 2px;
+}
+.open-badge {
+  background: #F3EFFE;
+  color: #7C3AED;
+  font-size: 11px;
+  font-weight: 500;
+  padding: 3px 10px;
+  border-radius: 20px;
+  border: 0.5px solid #C4B5FD;
+}
+.tab-row {
+  display: flex;
+  gap: 6px;
+  padding-bottom: 10px;
+}
+.tab-pill {
+  padding: 5px 13px;
+  border-radius: 20px;
+  font-size: 12px;
+  color: var(--text2);
+  border: 0.5px solid #E4DAFF;
+  background: #fff;
+}
+.tab-pill.on {
+  background: var(--brand);
+  color: #fff;
+  border-color: var(--brand);
+}
+
+/* 布局控制 */
+.layout {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+.sidebar {
+  width: 80px;
+  background: #fff;
+  border-right: 0.5px solid #EDE8FF;
+  height: 100%;
+}
+.cat-item {
+  padding: 15px 6px;
+  text-align: center;
+  font-size: 11px;
+  color: var(--text2);
+  position: relative;
+  line-height: 1.4;
+}
+.cat-item.active {
+  color: var(--brand);
+  font-weight: bold;
+  background-color: var(--brand-light);
+}
+.cat-item.active::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3px;
+  height: 22px;
+  background: var(--brand);
+  border-radius: 0 3px 3px 0;
+}
+.cat-emoji {
+  font-size: 16px;
+  display: block;
+  margin-bottom: 2px;
+}
+
+.main {
+  flex: 1;
+  height: 100%;
+  padding-bottom: 20px;
+}
+.cat-header {
+  padding: 14px 12px 6px;
+  font-size: 13px;
+  font-weight: bold;
+  color: var(--text1);
+}
+.cat-count {
+  font-size: 11px;
+  color: var(--text3);
+  font-weight: 400;
+  margin-left: 4px;
+}
+
+/* 菜品卡片 */
+.dish {
+  display: flex;
+  gap: 10px;
+  padding: 10px;
+  background: #fff;
+  margin: 0 8px 6px;
+  border-radius: 14px;
+  border: 0.5px solid #EDE8FF;
+  transition: all .15s;
+}
+.dish.bump {
+  transform: scale(0.95);
+}
+.dish-img {
+  width: 66px;
+  height: 66px;
+  border-radius: 10px;
+  background: var(--brand-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  position: relative;
+}
+.sold-mask {
+  position: absolute;
+  inset: 0;
+  background: rgba(255,255,255,.7);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  color: var(--text3);
+  font-weight: 500;
+}
+.dish-body {
+  flex: 1;
+  min-width: 0;
+}
+.dish-name {
+  font-size: 13px;
+  font-weight: bold;
+  color: var(--text1);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-wrap: wrap;
+  margin-bottom: 2px;
+}
+.pill {
+  font-size: 9px;
+  padding: 1px 6px;
+  border-radius: 10px;
+  font-weight: 500;
+}
+.p-hot { background: #FEF3C7; color: #92400E; }
+.p-love { background: #FCE7F3; color: #9D174D; }
+.p-new { background: #D1FAE5; color: #065F46; }
+.p-rare { background: #EDE9FE; color: #5B21B6; }
+.p-free { background: #DBEAFE; color: #1E40AF; }
+
+.stars-row {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  margin-bottom: 3px;
+}
+.star-i {
+  color: var(--star);
+  font-size: 10px;
+}
+.dish-desc {
+  font-size: 11px;
+  color: var(--text2);
+  line-height: 1.4;
+  margin-bottom: 6px;
+}
+.dish-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.price-tag {
+  font-size: 11px;
+  color: #D4537E;
+  font-weight: bold;
+}
+.price-unit {
+  font-size: 10px;
+  color: var(--text3);
+  font-weight: 400;
+}
+
+/* 步进器按钮重写（移除小程序默认button边框） */
+.stepper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.s-btn, .add-circle {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+.s-btn {
+  border: 1.5px solid var(--brand);
+  background: #fff;
+  color: var(--brand);
+  font-size: 14px;
+}
+.s-btn.hide {
+  display: none;
+}
+.s-num {
+  font-size: 12px;
+  font-weight: bold;
+  color: var(--text1);
+  min-width: 12px;
+  text-align: center;
+}
+.add-circle {
+  background: var(--brand);
+  color: #fff;
+  font-size: 16px;
+  border: none;
+}
+
+/* 底部操作栏 */
+.bottombar {
+  background: #fff;
+  border-top: 0.5px solid #EDE8FF;
+  padding: 10px 12px calc(10px + env(safe-area-inset-bottom)); /* 适配全面屏安全区域 */
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.cart-wrap {
+  position: relative;
+  width: 38px;
+  height: 38px;
+  background: var(--brand-light);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.bdg {
+  position: absolute;
+  top: -3px;
+  right: -3px;
+  background: #EF4444;
+  color: #fff;
+  border-radius: 10px;
+  font-size: 9px;
+  font-weight: bold;
+  padding: 1px 5px;
+  display: none;
+}
+.bdg.show {
+  display: block;
+}
+.mid-btns {
+  display: flex;
+  gap: 6px;
+  flex: 1;
+}
+.rand-btn, .invite-btn {
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 8px 0;
+  margin: 0;
+  line-height: 1.5;
+  flex: 1;
+  text-align: center;
+}
+.rand-btn {
+  border: 1px solid var(--brand);
+  background: #fff;
+  color: var(--brand);
+}
+.invite-btn {
+  border: 1.5px solid var(--brand);
+  background: #fff;
+  color: var(--brand);
+}
+.order-btn {
+  padding: 8px 18px;
+  border-radius: 20px;
+  background: var(--brand);
+  color: #fff;
+  font-size: 12px;
+  font-weight: bold;
+  margin: 0;
+  line-height: 1.5;
+  opacity: .4;
+}
+.order-btn.on {
+  opacity: 1;
+}

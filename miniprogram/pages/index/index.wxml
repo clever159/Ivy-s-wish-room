@@ -1,0 +1,78 @@
+<div class="app">
+  <view class="topbar">
+    <view class="topbar-row">
+      <view>
+        <view class="shop-name">💜 蛋蛋专属小馆</view>
+        <view class="shop-sub">只为你开 · 随叫随到 · ⭐ 永远5.0</view>
+      </view>
+      <view class="open-badge">为你接单中</view>
+    </view>
+    <view class="tab-row">
+      <view class="tab-pill on">点单</view>
+      <view class="tab-pill">修改</view>
+      <view class="tab-pill">历史订单</view>
+    </view>
+  </view>
+
+  <view class="layout">
+    <scroll-view class="sidebar" scroll-y enhanced show-scrollbar="{{false}}">
+      <block wx:for="{{categories}}" wx:key="id">
+        <view class="cat-item {{activeCategoryIndex === index ? 'active' : ''}}" bindtap="onCategoryTap" data-id="{{item.id}}" data-index="{{index}}">
+          <text class="cat-emoji">{{item.emoji}}</text>{{item.name}}
+        </view>
+      </block>
+    </scroll-view>
+
+    <scroll-view class="main" scroll-y scroll-into-view="{{scrollToId}}" scroll-with-animation enhanced show-scrollbar="{{false}}">
+      <block wx:for="{{categories}}" wx:key="id" wx:for-item="cat">
+        <view id="{{cat.id}}">
+          <view class="cat-header">{{cat.emoji}} {{cat.name}}<text class="cat-count">({{cat.dishes.length}})</text></view>
+          
+          <block wx:for="{{cat.dishes}}" wx:key="name" wx:for-item="dish" wx:for-index="dishIndex">
+            <view class="dish {{dish.isBumping ? 'bump' : ''}}" bindtap="onDishTap" data-cat-index="{{index}}" data-dish-index="{{dishIndex}}">
+              <view class="dish-img">
+                <image wx:if="{{dish.img.length > 4}}" src="{{dish.img}}" mode="aspectFill" style="width:100%;height:100%;border-radius:10px;"></image>
+                <text wx:else>{{dish.img}}</text>
+                <view wx:if="{{dish.isSoldOut}}" class="sold-mask">补货中</view>
+              </view>
+              <view class="dish-body">
+                <view class="dish-name">
+                  {{dish.name}}
+                  <text class="pill p-{{dish.tagType}}">{{dish.tag}}</text>
+                </view>
+                <view class="stars-row">
+                  <text class="star-i">★★★★★</text>
+                  <text style="font-size:10px;color:var(--text2);margin-left:3px;">5.0</text>
+                </view>
+                <view class="dish-desc">{{dish.desc}}</view>
+                <view class="dish-bottom">
+                  <text class="price-tag">{{dish.price}}<text class="price-unit">{{dish.unit}}</text></text>
+                  
+                  <text wx:if="{{dish.isRule}}" style="font-size:10px;color:var(--text3);">已知晓 ✓</text>
+                  
+                  <view wx:else class="stepper">
+                    <button class="s-btn {{dish.count === 0 ? 'hide' : ''}}" catchtap="dec" data-cat-index="{{index}}" data-dish-index="{{dishIndex}}">−</button>
+                    <text class="s-num" wx:if="{{dish.count > 0}}">{{dish.count}}</text>
+                    <button class="add-circle" catchtap="inc" data-cat-index="{{index}}" data-dish-index="{{dishIndex}}">+</button>
+                  </view>
+                </view>
+              </view>
+            </view>
+          </block>
+        </view>
+      </block>
+    </scroll-view>
+  </view>
+
+  <view class="bottombar">
+    <view class="cart-wrap">
+      <text style="font-size:20px;">🛒</text>
+      <view class="bdg {{totalCount > 0 ? 'show' : ''}}">{{totalCount}}</view>
+    </view>
+    <view class="mid-btns">
+      <button class="rand-btn" bindtap="randPick">随机选菜</button>
+      <button class="invite-btn" open-type="share">邀请下单</button>
+    </view>
+    <button class="order-btn {{totalCount > 0 ? 'on' : ''}}" bindtap="submitOrder">下单 ↗</button>
+  </view>
+</div>
