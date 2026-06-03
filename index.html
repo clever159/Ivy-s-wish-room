@@ -13,20 +13,19 @@
         <header class="topbar">
             <div class="topbar-row">
                 <div>
-                    <h1 class="shop-name">💜 蛋蛋专属小馆</h1>
+                    <h1 class="shop-name">🥚蛋蛋专属小馆🥚</h1>
                     <p class="shop-sub">只为你开 · 随叫随到 · ⭐ 永远5.0</p>
                 </div>
                 <div class="open-badge">为你接单中</div>
             </div>
             <nav class="tab-row">
-                <div class="tab-pill on">点单</div>
-                <div class="tab-pill">修改</div>
-                <div class="tab-pill">历史订单</div>
+                <div class="tab-pill on" id="tab-order" onclick="switchTab('order')">点单</div>
+                <div class="tab-pill" id="tab-history" onclick="switchTab('history')">历史订单</div>
             </nav>
         </header>
 
         <!-- 主体布局 -->
-        <div class="layout">
+        <div class="layout" id="order-view">
             <!-- 左侧侧边栏 -->
             <aside class="sidebar" id="sidebar">
                 <!-- 动态渲染分类 -->
@@ -36,6 +35,14 @@
             <main class="main" id="main-content">
                 <!-- 动态渲染菜品 -->
             </main>
+        </div>
+
+        <!-- 历史订单布局 -->
+        <div class="history-layout" id="history-view" style="display: none;">
+            <div class="history-header">已完成的投喂记录</div>
+            <div id="history-list" class="history-list">
+                <!-- 动态渲染历史订单 -->
+            </div>
         </div>
 
         <!-- 底部栏 -->

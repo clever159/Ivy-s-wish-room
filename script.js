@@ -84,6 +84,7 @@ const state = {
                 { name: '其他', img: '✨', tag: '自定义', tagType: 'free', desc: '有别的充电方式？', count: 0 }
             ]
         }
+        ,
         {
             id: 'c10', name: '其他', emoji: '🎲',
             dishes: [
@@ -105,8 +106,64 @@ const modalContent = document.getElementById('modal-content');
 const modalCancel = document.getElementById('modal-cancel');
 const modalConfirm = document.getElementById('modal-confirm');
 
+// 视图切换引用
+const orderView = document.getElementById('order-view');
+const historyView = document.getElementById('history-view');
+const tabOrder = document.getElementById('tab-order');
+const tabHistory = document.getElementById('tab-history');
+const historyList = document.getElementById('history-list');
+
 // 大厨推送 Key (已硬编码)
 const chefPushKey = 'PDU41838T1UA7OqObxkpYSVZQ0ULhS9rA1Qz44qOl';
+
+// 标签切换逻辑
+window.switchTab = (tab) => {
+    if (tab === 'order') {
+        orderView.style.display = 'flex';
+        historyView.style.display = 'none';
+        tabOrder.classList.add('on');
+        tabHistory.classList.remove('on');
+    } else {
+        orderView.style.display = 'none';
+        historyView.style.display = 'block';
+        tabOrder.classList.remove('on');
+        tabHistory.classList.add('on');
+        renderHistory();
+    }
+};
+
+// 历史订单存储逻辑
+function saveOrderToHistory(orderList) {
+    const history = JSON.parse(localStorage.getItem('orderHistory') || '[]');
+    const newOrder = {
+        id: Date.now(),
+        time: new Date().toLocaleString(),
+        items: orderList
+    };
+    history.unshift(newOrder); // 新订单排在最前面
+    localStorage.setItem('orderHistory', JSON.stringify(history));
+}
+
+function renderHistory() {
+    const history = JSON.parse(localStorage.getItem('orderHistory') || '[]');
+    if (history.length === 0) {
+        historyList.innerHTML = '<div class="empty-history">暂无历史投喂记录 🫡</div>';
+        return;
+    }
+
+    historyList.innerHTML = history.map(order => `
+        <div class="history-item">
+            <div class="history-time">
+                <span>📅 ${order.time}</span>
+                <span style="color:var(--brand)">已送达</span>
+            </div>
+            ${order.items.map(item => `
+                <div class="history-dish">${item.name} x${item.count}</div>
+                ${item.remark !== '无备注' ? `<div class="history-remark">💬 ${item.remark}</div>` : ''}
+            `).join('')}
+        </div>
+    `).join('');
+}
 
 // 渲染侧边栏
 function renderSidebar() {
@@ -305,14 +362,18 @@ function sendToPushDeer(orderList) {
 
     fetch(url, { mode: 'no-cors' })
         .then(() => {
+            // no-cors 模式下无法判断是否真的成功，但通常只要不报错就是发出了
             showToast('呼叫请求已发出！🚀\n请等待大厨确认');
+            saveOrderToHistory(orderList); // 保存到历史记录
             clearCart();
         })
         .catch(err => {
             console.error('Fetch failed, trying image fallback:', err);
+            // 备选方案：利用 <img> 标签绕过一些极其严格的跨域限制
             const img = new Image();
             img.src = url;
             showToast('呼叫请求已发出(备选通道)！🚀');
+            saveOrderToHistory(orderList); // 保存到历史记录
             clearCart();
         });
 }
@@ -354,6 +415,7 @@ function sendToFeishu(orderList) {
     .then(data => {
         if (data.code === 0) {
             showToast('大厨手机已震动！🚀');
+            saveOrderToHistory(orderList); // 保存到历史记录
             clearCart();
         } else {
             showToast('飞书接口报错：' + data.msg);
