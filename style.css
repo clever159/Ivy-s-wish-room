@@ -267,56 +267,6 @@ body {
     font-family: inherit;
     line-height: 24px;
 }
-.remark-photo-wrap {
-    margin-top: 0;
-    display: flex;
-}
-.photo-preview {
-    width: 32px;
-    height: 32px;
-    border: 1px dashed #D1D5DB;
-    border-radius: 6px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 14px;
-    color: #9CA3AF;
-    cursor: pointer;
-    position: relative;
-    overflow: hidden;
-    background: #fff;
-}
-.photo-preview span {
-    display: none; /* 隐藏文字，只留图标 */
-}
-.photo-preview::after {
-    content: '📸';
-}
-.photo-preview.has-img::after {
-    display: none;
-}
-.photo-preview.has-img {
-    border-style: solid;
-}
-.photo-preview img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-.del-photo {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 12px;
-    height: 12px;
-    background: rgba(0,0,0,0.5);
-    color: #fff;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 8px;
-}
 .price-unit {
     font-size: 10px;
     margin-left: 1px;
@@ -508,15 +458,6 @@ body {
     border-radius: 6px;
     margin-top: 4px;
     margin-left: 10px;
-}
-.history-photo {
-    width: 50px;
-    height: 50px;
-    border-radius: 4px;
-    margin-top: 6px;
-    margin-left: 10px;
-    object-fit: cover;
-    border: 0.5px solid #E5E7EB;
 }
 .empty-history {
     text-align: center;

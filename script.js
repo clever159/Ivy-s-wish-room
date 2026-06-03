@@ -196,7 +196,6 @@ function renderHistory() {
             ${order.items.map(item => `
                 <div class="history-dish">${item.name} x${item.count}</div>
                 ${item.remark !== '无备注' ? `<div class="history-remark">💬 ${item.remark}</div>` : ''}
-                ${item.photo ? `<img src="${item.photo}" class="history-photo" onclick="window.open('${item.photo}')">` : ''}
             `).join('')}
         </div>
     `).join('');
@@ -239,13 +238,6 @@ function renderMain() {
                                 placeholder="添加备注（口味、要求等）..." 
                                 oninput="onRemarkInput(${cIdx}, ${dIdx}, this.value)"
                             >${dish.remark || ''}</textarea>
-                            <div class="remark-photo-wrap">
-                                <input type="file" id="file-${cIdx}-${dIdx}" hidden accept="image/*" onchange="onPhotoChange(${cIdx}, ${dIdx}, this)">
-                                <div class="photo-preview ${dish.remarkPhoto ? 'has-img' : ''}" onclick="document.getElementById('file-${cIdx}-${dIdx}').click()">
-                                    ${dish.remarkPhoto ? `<img src="${dish.remarkPhoto}">` : '<span>📸 上传图片</span>'}
-                                    ${dish.remarkPhoto ? `<div class="del-photo" onclick="event.stopPropagation(); removePhoto(${cIdx}, ${dIdx})">×</div>` : ''}
-                                </div>
-                            </div>
                         </div>
 
                         <div class="dish-bottom">
@@ -270,23 +262,6 @@ function renderMain() {
 // 备注处理
 window.onRemarkInput = (cIdx, dIdx, val) => {
     state.categories[cIdx].dishes[dIdx].remark = val;
-};
-
-window.onPhotoChange = (cIdx, dIdx, input) => {
-    const file = input.files[0];
-    if (file) {
-        const reader = new FileReader();
-        reader.onload = (e) => {
-            state.categories[cIdx].dishes[dIdx].remarkPhoto = e.target.result;
-            renderMain();
-        };
-        reader.readAsDataURL(file);
-    }
-};
-
-window.removePhoto = (cIdx, dIdx) => {
-    state.categories[cIdx].dishes[dIdx].remarkPhoto = null;
-    renderMain();
 };
 
 // 业务逻辑
@@ -378,15 +353,13 @@ document.getElementById('submit-btn').onclick = () => {
                 orderList.push({ 
                     name: dish.name, 
                     count: dish.count,
-                    remark: dish.remark || '无备注',
-                    hasPhoto: !!dish.remarkPhoto,
-                    photo: dish.remarkPhoto // 保存图片数据到历史记录
+                    remark: dish.remark || '无备注'
                 });
             }
         });
     });
 
-    const alertContent = orderList.map(item => `• ${item.name} x${item.count}${item.hasPhoto ? ' [带图]' : ''}\n  备注：${item.remark}`).join('\n');
+    const alertContent = orderList.map(item => `• ${item.name} x${item.count}\n  备注：${item.remark}`).join('\n');
     
     showModal('💖 专属订单确认', `确定要向大厨发送以下投喂申请吗？\n\n${alertContent}`, () => {
         sendToPushDeer(orderList);
@@ -394,7 +367,7 @@ document.getElementById('submit-btn').onclick = () => {
 };
 
 function sendToPushDeer(orderList) {
-    const text = `🔔 新订单：\n${orderList.map(item => `• ${item.name} x${item.count}\n  备注：${item.remark}${item.hasPhoto ? ' [见网页附件]' : ''}`).join('\n')}\n合计：${state.totalCount}件`;
+    const text = `🔔 新订单：\n${orderList.map(item => `• ${item.name} x${item.count}\n  备注：${item.remark}`).join('\n')}\n合计：${state.totalCount}件`;
     const url = `https://api2.pushdeer.com/message/push?pushkey=${chefPushKey}&text=${encodeURIComponent(text)}`;
 
     fetch(url, { mode: 'no-cors' })
