@@ -90,23 +90,8 @@ const modalContent = document.getElementById('modal-content');
 const modalCancel = document.getElementById('modal-cancel');
 const modalConfirm = document.getElementById('modal-confirm');
 
-// 大厨推送设置
-const chefSettingsBtn = document.getElementById('chef-settings-btn');
-const chefModalOverlay = document.getElementById('chef-modal-overlay');
-const pushKeyInput = document.getElementById('push-key-input');
-const saveChefSettings = document.getElementById('save-chef-settings');
-
-// 初始化推送 Key
-let chefPushKey = localStorage.getItem('chefPushKey') || '';
-pushKeyInput.value = chefPushKey;
-
-chefSettingsBtn.onclick = () => chefModalOverlay.classList.add('show');
-saveChefSettings.onclick = () => {
-    chefPushKey = pushKeyInput.value.trim();
-    localStorage.setItem('chefPushKey', chefPushKey);
-    chefModalOverlay.classList.remove('show');
-    showToast('设置已保存！');
-};
+// 大厨推送 Key (已硬编码)
+const chefPushKey = 'PDU41838T1UA7OqObxkpYSVZQ0ULhS9rA1Qz44qOl';
 
 // 渲染侧边栏
 function renderSidebar() {

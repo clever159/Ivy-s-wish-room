@@ -17,7 +17,6 @@
                     <p class="shop-sub">只为你开 · 随叫随到 · ⭐ 永远5.0</p>
                 </div>
                 <div class="open-badge">为你接单中</div>
-                <div id="chef-settings-btn" style="font-size: 18px; cursor: pointer; margin-left: 10px;">⚙️</div>
             </div>
             <nav class="tab-row">
                 <div class="tab-pill on">点单</div>
@@ -60,23 +59,7 @@
             <div id="modal-content" class="modal-content"></div>
             <div class="modal-footer">
                 <button id="modal-cancel">再想想</button>
-                <button id="modal-confirm" style="background: #9333ea; color: white; border: none;">呼叫大厨</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- 大厨设置弹窗 -->
-    <div id="chef-modal-overlay" class="modal-overlay">
-        <div class="modal">
-            <h3>⚙️ 大厨通知设置</h3>
-            <div class="modal-content">
-                <p style="font-size: 12px; margin-bottom: 10px;">为了让大厨收到实时通知，建议使用 PushDeer (支持微信推送)。</p>
-                <input type="text" id="push-key-input" placeholder="请输入 PushDeer Key" style="width: 100%; padding: 10px; border-radius: 8px; border: 1px solid #ddd; margin-bottom: 10px;">
-                <p style="font-size: 10px; color: #999;">1. 在微信搜索 "PushDeer" 小程序<br>2. 获取自己的 PushKey 并填入上方</p>
-            </div>
-            <div class="modal-footer">
-                <button onclick="document.getElementById('chef-modal-overlay').classList.remove('show')">取消</button>
-                <button id="save-chef-settings" style="background: var(--brand); color: white;">保存设置</button>
+                <button id="modal-confirm">呼叫大厨</button>
             </div>
         </div>
     </div>
