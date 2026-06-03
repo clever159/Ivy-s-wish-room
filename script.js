@@ -90,6 +90,24 @@ const modalContent = document.getElementById('modal-content');
 const modalCancel = document.getElementById('modal-cancel');
 const modalConfirm = document.getElementById('modal-confirm');
 
+// 大厨推送设置
+const chefSettingsBtn = document.getElementById('chef-settings-btn');
+const chefModalOverlay = document.getElementById('chef-modal-overlay');
+const pushKeyInput = document.getElementById('push-key-input');
+const saveChefSettings = document.getElementById('save-chef-settings');
+
+// 初始化推送 Key
+let chefPushKey = localStorage.getItem('chefPushKey') || '';
+pushKeyInput.value = chefPushKey;
+
+chefSettingsBtn.onclick = () => chefModalOverlay.classList.add('show');
+saveChefSettings.onclick = () => {
+    chefPushKey = pushKeyInput.value.trim();
+    localStorage.setItem('chefPushKey', chefPushKey);
+    chefModalOverlay.classList.remove('show');
+    showToast('设置已保存！');
+};
+
 // 渲染侧边栏
 function renderSidebar() {
     sidebar.innerHTML = state.categories.map((cat, index) => `
@@ -229,9 +247,30 @@ document.getElementById('submit-btn').onclick = () => {
     const alertContent = orderList.map(item => `• ${item.name} x${item.count}`).join('\n');
     
     showModal('💖 专属订单确认', `确定要向大厨发送以下投喂申请吗？\n\n${alertContent}`, () => {
-        sendToFeishu(orderList);
+        if (chefPushKey) {
+            sendToPushDeer(orderList);
+        } else {
+            sendToFeishu(orderList);
+        }
     });
 };
+
+function sendToPushDeer(orderList) {
+    const text = `🔔 新订单：\n${orderList.map(item => `• ${item.name} x${item.count}`).join('\n')}\n合计：${state.totalCount}件`;
+    const url = `https://api2.pushdeer.com/message/push?pushkey=${chefPushKey}&text=${encodeURIComponent(text)}`;
+
+    // PushDeer API 通常允许跨域，或者可以通过 mode: 'no-cors' 发起“火后即忘”请求
+    fetch(url, { mode: 'no-cors' })
+        .then(() => {
+            showToast('已通过 PushDeer 呼叫大厨！🚀');
+            clearCart();
+        })
+        .catch(err => {
+            console.error(err);
+            showToast('PushDeer 发送失败，尝试飞书...');
+            sendToFeishu(orderList);
+        });
+}
 
 function sendToFeishu(orderList) {
     const feishuWebhookUrl = 'https://open.feishu.cn/open-apis/bot/v2/hook/4987f535-5fde-4987-933d-455830978aa9';
