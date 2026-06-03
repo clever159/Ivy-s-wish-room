@@ -6,74 +6,83 @@ const state = {
         {
             id: 'c1', name: '注意！', emoji: '📢',
             dishes: [
-                { name: '注意！不可贪心！', img: '⚠️', tag: '店规', tagType: 'rare', desc: '大厨会尽力完成，但保留因懒取消的权利 🫡', isRule: true, count: 0, price: 0, unit: '次' }
+                { name: '注意！不可贪心！想一下能不能吃！', img: '⚠️', tag: '店规', tagType: 'rare', desc: '大厨会尽力完成，但保留因懒取消的权利 🫡', isRule: true, count: 0 },
+                { name: '其他', img: '✨', tag: '自定义', tagType: 'free', desc: '想让大厨做点别的？在这里备注说明吧', count: 0 }
             ]
         },
         {
             id: 'c2', name: '喝的', emoji: '🧋',
             dishes: [
-                { name: '奶茶', img: '🧋', tag: '热门', tagType: 'hot', desc: '瑞幸/霸王茶姬/茶百道/喜茶/雪王随你选，备注口味甜度', count: 0, price: 0, unit: '元' },
-                { name: '西瓜冰', img: '🍉', tag: '热门', tagType: 'hot', count: 0, price: 0, unit: '元' },
-                { name: '尖叫', img: 'images/drink/jjblue.png', tag: '挤着喝', tagType: 'new', desc: '备注颜色', count: 0, price: 0, unit: '元' },
-                { name: '营养快线', img: 'images/drink/yykx.png', tag: '酸奶饮料', tagType: 'free', desc: '备注口味', count: 0, price: 0, unit: '元' }
+                { name: '奶茶', img: '🧋', tag: '热门', tagType: 'hot', desc: '瑞幸/霸王茶姬/茶百道/喜茶/雪王随你选，备注口味甜度', count: 0 },
+                { name: '西瓜冰', img: '🍉', tag: '夏日必备', tagType: 'hot', count: 0 },
+                { name: '尖叫', img: 'images/drink/jjblue.png', tag: '挤着喝', tagType: 'new', desc: '备注颜色', count: 0 },
+                { name: '营养快线', img: 'images/drink/yykx.png', tag: '酸奶饮料', tagType: 'free', desc: '备注口味', count: 0 },
+                { name: '其他', img: '✨', tag: '自定义', tagType: 'free', desc: '想喝点别的？备注说明', count: 0 }
             ]
         },
         {
             id: 'c3', name: '路边摊', emoji: '🍢',
             dishes: [
-                { name: '淀粉肠 / 花刀肠', img: '🌭', tag: '招牌', tagType: 'hot', desc: '烤得焦焦的，撒孜然辣椒，一起蹲着吃', count: 0, price: 0, unit: '元' },
-                { name: '麻辣烫基础套餐', img: '🍲', tag: '必点', tagType: 'hot', desc: '有别的想加的备注上', count: 0, price: 0, unit: '元' },
-                { name: '香辣烤面筋', img: '🍢', tag: '深夜灵魂', tagType: 'hot', desc: '大王叫我来巡山，抓个面筋做晚餐！多撒孜然多放辣 🌶️', count: 0, price: 0, unit: '元' },
-                { name: '糖醋铁板烧', img: '🍱', tag: '独家', tagType: 'love', desc: '酸酸甜甜就像你，一起去学校门口那家',  count: 0, price: 0, unit: '元' }
+                { name: '淀粉肠 / 花刀肠', img: '🌭', tag: '香', tagType: 'hot', desc: '世界上最大的超市特有', count: 0 },
+                { name: '麻辣烫基础套餐', img: '🍲', tag: '必点', tagType: 'hot', desc: '有别的想加的备注上', count: 0 },
+                { name: '香辣烤面筋', img: '🍢', tag: '深夜灵魂', tagType: 'hot', desc: '可能没那么想吃吧', count: 0 },
+                { name: '糖醋铁板烧', img: '🍱', tag: '独家', tagType: 'love', desc: '宝藏小店',  count: 0 },
+                { name: '其他', img: '✨', tag: '自定义', tagType: 'free', desc: '想吃点别的？备注说明', count: 0 }
             ]
         },
         {
             id: 'c4', name: '快餐', emoji: '🍔',
             dishes: [
-                { name: "McDonald's", img: '🍟', tag: '神圣', tagType: 'hot', desc: '你点单我去取，疯狂星期四或周末专属福利', count: 0, price: 0, unit: '元' },
-                { name: 'Taco / 塔克星', img: '🌮', tag: '新品', tagType: 'new', desc: '一起去吃，拍照必须给你拍好看', count: 0, price: 0, unit: '元' },
-                { name: 'KFC', img: '🍗', tag: '疯四限定', tagType: 'hot', desc: '周四限定，不用V我50', count: 0, price: 0, unit: '元' }
+                { name: "McDonald's", img: '🍟', tag: '神圣', tagType: 'hot', desc: '我钟意食牡丹楼', count: 0 },
+                { name: 'Taco / 塔克星', img: '🌮', tag: '新品', tagType: 'new', desc: 'Taco Tuesday!', count: 0 },
+                { name: 'KFC', img: '🍗', tag: '疯四限定', tagType: 'hot', desc: '不用V我50', count: 0 },
+                { name: '其他', img: '✨', tag: '自定义', tagType: 'free', desc: '想吃点别的？备注说明', count: 0 }
             ]
         },
         {
             id: 'c5', name: '甜点', emoji: '🎂',
             dishes: [
-                { name: '蛋糕', img: '🎂', tag: '随时可点', tagType: 'love', desc: '生日/想吃/无理由均可，附手写小卡', count: 0, price: 0, unit: '元' },
-                { name: '零食大礼包', img: '🍩', tag: '上新', tagType: 'new', desc: '超市自选，大厨推着购物车跟你走', count: 0, price: 0, unit: '元' }
+                { name: '蛋糕', img: '🎂', tag: '随时可点', tagType: 'love', desc: '想吃蛋糕需要什么理由呢', count: 0 },
+                { name: '零食大礼包', img: '🍩', tag: '上新', tagType: 'new', desc: '超市自选，推着购物车跟你走', count: 0 },
+                { name: '其他', img: '✨', tag: '自定义', tagType: 'free', desc: '想吃点别的？备注说明', count: 0 }
             ]
         },
         {
             id: 'c6', name: '仓鼠局', emoji: '🐹',
             dishes: [
-                { name: '溜鸡蛋出门遛弯', img: '🐹', tag: '专属', tagType: 'love', desc: '带鸡蛋出来晒太阳，大厨负责拍好看的照片存档', count: 0, price: 0, unit: '元' },
-                { name: '给鸡蛋加餐', img: '🥗', tag: '营养套餐', tagType: 'new', desc: '帮你去买仓鼠零食/粮食，配送到你手', count: 0, price: 0, unit: '元' },
-                { name: '鸡蛋专属写真', img: '📸', tag: '限定', tagType: 'rare', desc: '布置场景，给鸡蛋拍一套写真，交付高清原图', count: 0, price: 0, unit: '元' }
+                { name: '带鸡蛋出门遛弯', img: '🐹', tag: '专属', tagType: 'love', desc: '带鸡蛋出来晒太阳啃草皮', count: 0 },
+                { name: '给鸡蛋加餐', img: '🥗', tag: '营养套餐', tagType: 'new', desc: '帮你去买仓鼠零食/粮食', count: 0 },
+                { name: '鸡蛋专属写真', img: '📸', tag: '限定', tagType: 'rare', desc: '谁说我拍照不好看！', count: 0 },
+                { name: '其他', img: '✨', tag: '自定义', tagType: 'free', desc: '其他关于鸡蛋的需求？', count: 0 }
             ]
         },
         {
             id: 'c7', name: '游戏局', emoji: '🎮',
             dishes: [
-                { name: '打王者', img: '👑', tag: '开黑', tagType: 'hot', desc: '全程配合，你carry我辅助，输了不甩锅，我保证！', count: 0, price: 0, unit: '元' },
-                { name: '打蛋仔派对', img: '🥚', tag: '最爱', tagType: 'love', desc: '小红保驾护航，输了算我炸单', count: 0, price: 0, unit: '元' },
-                { name: '随便玩你选', img: '🎲', tag: '自由点', tagType: 'free', desc: '你说玩什么就玩什么，大厨永远奉陪', count: 0, price: 0, unit: '元' }
+                { name: '打王者', img: '👑', tag: '开黑', tagType: 'hot', desc: '全程配合，你carry我辅助，输了不甩锅，我保证！', count: 0 },
+                { name: '打蛋仔派对', img: '🥚', tag: '最爱', tagType: 'love', desc: '小红保驾护航，输了算我炸单', count: 0 },
+                { name: '随便玩你选', img: '🎲', tag: '自由点', tagType: 'free', desc: '你说玩什么就玩什么，永远奉陪', count: 0 },
+                { name: '其他', img: '✨', tag: '自定义', tagType: 'free', desc: '想玩别的游戏？', count: 0 }
             ]
         },
         {
             id: 'c8', name: '约会局', emoji: '🌅',
             dishes: [
-                { name: '湖边坐着发呆', img: '🌊', tag: '情侣套餐', tagType: 'love', desc: '带上零食，湖边坐到天黑，不说话也不尴尬', count: 0, price: 0, unit: '元' },
-                { name: '逛街（背包服务）', img: '🛍️', tag: '体力活', tagType: 'hot', desc: '大厨负责拿袋子、拍照、给意见，不催回家', count: 0, price: 0, unit: '元' },
-                { name: '陪你看电影', img: '🎬', tag: '限时', tagType: 'new', desc: '你选片，不许剧透不许催快进', count: 0, price: 0, unit: '元' },
-                { name: '夜晚散步', img: '🌙', tag: '浪漫', tagType: 'love', desc: '校园里随便走，边走边聊', count: 0, price: 0, unit: '元' }
+                { name: '湖边坐着发呆', img: '🌊', tag: '情侣套餐', tagType: 'love', desc: '挑眉emoji', count: 0 },
+                { name: '逛街（背包服务）', img: '🛍️', tag: '体力活', tagType: 'hot', desc: '在我手上试妆ba', count: 0 },
+                { name: '陪你看电影', img: '🎬', tag: '限时', tagType: 'new', desc: '看电影有点暧昧了', count: 0 },
+                { name: '夜晚散步', img: '🌙', tag: '浪漫', tagType: 'love', desc: '这项有点多余', count: 0 },
+                { name: '其他', img: '✨', tag: '自定义', tagType: 'free', desc: '有别的约会计划？', count: 0 }
             ]
         },
         {
             id: 'c9', name: '充电局', emoji: '📚',
             dishes: [
-                { name: '一起自习', img: '📖', tag: '高效', tagType: 'free', desc: '占好座位，带好零食，学不进去可以互相督促', count: 0, price: 0, unit: '元' },
-                { name: '不开心', img: '🧠', tag: 'emo', tagType: 'rare', desc: '找我聊天吧', count: 0, price: 0, unit: '元' },
-                { name: '生气了，需要哄', img: '💆', tag: '呵护', tagType: 'love', desc: '想咬人', count: 0, price: 0, unit: '元' },
-                { name: '需要静一静', img: '🤦‍♀️', tag: '呵护', tagType: 'love', count: 0, price: 0, unit: '元' }
+                { name: '一起自习', img: '📖', tag: '高效', tagType: 'free', desc: '', count: 0 },
+                { name: '不开心', img: '🧠', tag: 'emo', tagType: 'rare', desc: '找我聊天吧', count: 0 },
+                { name: '生气了，需要哄', img: '💆', tag: '呵护', tagType: 'love', desc: '想咬人的来', count: 0 },
+                { name: '需要静一静', img: '🤦‍♀️', tag: '呵护', tagType: 'love', count: 0 },
+                { name: '其他', img: '✨', tag: '自定义', tagType: 'free', desc: '有别的充电方式？', count: 0 }
             ]
         }
     ]
@@ -124,8 +133,25 @@ function renderMain() {
                             <span style="font-size:10px;color:var(--text2);margin-left:3px;">5.0</span>
                         </div>
                         <div class="dish-desc">${dish.desc || ''}</div>
+                        
+                        <!-- 备注区域 -->
+                        <div class="remark-area" onclick="event.stopPropagation()">
+                            <textarea 
+                                class="remark-input" 
+                                placeholder="添加备注（口味、要求等）..." 
+                                oninput="onRemarkInput(${cIdx}, ${dIdx}, this.value)"
+                            >${dish.remark || ''}</textarea>
+                            <div class="remark-photo-wrap">
+                                <input type="file" id="file-${cIdx}-${dIdx}" hidden accept="image/*" onchange="onPhotoChange(${cIdx}, ${dIdx}, this)">
+                                <div class="photo-preview ${dish.remarkPhoto ? 'has-img' : ''}" onclick="document.getElementById('file-${cIdx}-${dIdx}').click()">
+                                    ${dish.remarkPhoto ? `<img src="${dish.remarkPhoto}">` : '<span>📸 上传图片</span>'}
+                                    ${dish.remarkPhoto ? `<div class="del-photo" onclick="event.stopPropagation(); removePhoto(${cIdx}, ${dIdx})">×</div>` : ''}
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="dish-bottom">
-                            <span class="price-tag">${dish.price}<span class="price-unit">${dish.unit}</span></span>
+                            <span class="price-tag"></span>
                             ${dish.isRule ? `<span style="font-size:10px;color:var(--text3);">已知晓 ✓</span>` : `
                                 <div class="stepper">
                                     <button class="s-btn ${dish.count === 0 ? 'hide' : ''}" 
@@ -142,6 +168,28 @@ function renderMain() {
         </div>
     `).join('');
 }
+
+// 备注处理逻辑
+window.onRemarkInput = (cIdx, dIdx, val) => {
+    state.categories[cIdx].dishes[dIdx].remark = val;
+};
+
+window.onPhotoChange = (cIdx, dIdx, input) => {
+    const file = input.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+            state.categories[cIdx].dishes[dIdx].remarkPhoto = e.target.result;
+            renderMain();
+        };
+        reader.readAsDataURL(file);
+    }
+};
+
+window.removePhoto = (cIdx, dIdx) => {
+    state.categories[cIdx].dishes[dIdx].remarkPhoto = null;
+    renderMain();
+};
 
 // 事件处理
 window.onCategoryTap = (id, index) => {
@@ -224,12 +272,17 @@ document.getElementById('submit-btn').onclick = () => {
     state.categories.forEach(cat => {
         cat.dishes.forEach(dish => {
             if (dish.count > 0) {
-                orderList.push({ name: dish.name, count: dish.count });
+                orderList.push({ 
+                    name: dish.name, 
+                    count: dish.count,
+                    remark: dish.remark || '无备注',
+                    hasPhoto: !!dish.remarkPhoto
+                });
             }
         });
     });
 
-    const alertContent = orderList.map(item => `• ${item.name} x${item.count}`).join('\n');
+    const alertContent = orderList.map(item => `• ${item.name} x${item.count}${item.hasPhoto ? ' [带图]' : ''}\n  备注：${item.remark}`).join('\n');
     
     showModal('💖 专属订单确认', `确定要向大厨发送以下投喂申请吗？\n\n${alertContent}`, () => {
         if (chefPushKey) {
@@ -241,19 +294,16 @@ document.getElementById('submit-btn').onclick = () => {
 };
 
 function sendToPushDeer(orderList) {
-    const text = `🔔 新订单：\n${orderList.map(item => `• ${item.name} x${item.count}`).join('\n')}\n合计：${state.totalCount}件`;
+    const text = `🔔 新订单：\n${orderList.map(item => `• ${item.name} x${item.count}\n  备注：${item.remark}${item.hasPhoto ? ' [见网页附件]' : ''}`).join('\n')}\n合计：${state.totalCount}件`;
     const url = `https://api2.pushdeer.com/message/push?pushkey=${chefPushKey}&text=${encodeURIComponent(text)}`;
 
-    // 尝试使用 fetch 发送
     fetch(url, { mode: 'no-cors' })
         .then(() => {
-            // no-cors 模式下无法判断是否真的成功，但通常只要不报错就是发出了
             showToast('呼叫请求已发出！🚀\n请等待大厨确认');
             clearCart();
         })
         .catch(err => {
             console.error('Fetch failed, trying image fallback:', err);
-            // 备选方案：利用 <img> 标签绕过一些极其严格的跨域限制
             const img = new Image();
             img.src = url;
             showToast('呼叫请求已发出(备选通道)！🚀');
@@ -268,19 +318,18 @@ function sendToFeishu(orderList) {
         return [
             { tag: "text", text: " ◉  " },
             { tag: "text", text: `${item.name} `, style: ["bold"] },
-            { tag: "text", text: `x${item.count} `, style: ["bold"] }
+            { tag: "text", text: `x${item.count} `, style: ["bold"] },
+            { tag: "text", text: `\n    备注：${item.remark}${item.hasPhoto ? ' [带图]' : ''}` }
         ];
     });
 
     feishuElements.push([
-        { tag: "text", text: `-----------------------------------\n` },
+        { tag: "text", text: `\n-----------------------------------\n` },
         { tag: "text", text: `合计数量：`, style: ["bold"] },
         { tag: "text", text: `${state.totalCount} 件宝贝\n` },
         { tag: "text", text: `🏃‍♂️ 请大厨快快起锅烧油，提鞋赶来！` }
     ]);
 
-    // 注意：Web 端直接调用 Webhook 可能会遇到跨域 (CORS) 问题
-    // 建议通过云函数中转，或者在飞书后台配置允许的域名
     fetch(feishuWebhookUrl, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -311,7 +360,11 @@ function sendToFeishu(orderList) {
 
 function clearCart() {
     state.categories.forEach(cat => {
-        cat.dishes.forEach(dish => dish.count = 0);
+        cat.dishes.forEach(dish => {
+            dish.count = 0;
+            dish.remark = '';
+            dish.remarkPhoto = null;
+        });
     });
     calculateTotal();
     renderMain();
@@ -319,7 +372,7 @@ function clearCart() {
 
 // UI 辅助
 function showToast(msg) {
-    alert(msg); // 简单起见使用 alert，后续可美化
+    alert(msg);
 }
 
 function showModal(title, content, onConfirm) {
