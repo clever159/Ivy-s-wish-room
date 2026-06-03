@@ -7,7 +7,6 @@ const state = {
             id: 'c1', name: '注意！', emoji: '📢',
             dishes: [
                 { name: '注意！不可贪心！想一下能不能吃！', img: '⚠️', tag: '店规', tagType: 'rare', desc: '大厨会尽力完成，但保留因懒取消的权利 🫡', isRule: true, count: 0 },
-                { name: '其他', img: '✨', tag: '自定义', tagType: 'free', desc: '想让大厨做点别的？在这里备注说明吧', count: 0 }
             ]
         },
         {
@@ -27,6 +26,7 @@ const state = {
                 { name: '麻辣烫基础套餐', img: '🍲', tag: '必点', tagType: 'hot', desc: '有别的想加的备注上', count: 0 },
                 { name: '香辣烤面筋', img: '🍢', tag: '深夜灵魂', tagType: 'hot', desc: '可能没那么想吃吧', count: 0 },
                 { name: '糖醋铁板烧', img: '🍱', tag: '独家', tagType: 'love', desc: '宝藏小店',  count: 0 },
+                { name: '烤冷面', img: '🍱', tag: '东北味儿', tagType: 'love', desc: '我俩还是一起去买吧',  count: 0 },
                 { name: '其他', img: '✨', tag: '自定义', tagType: 'free', desc: '想吃点别的？备注说明', count: 0 }
             ]
         },
@@ -62,7 +62,6 @@ const state = {
                 { name: '打王者', img: '👑', tag: '开黑', tagType: 'hot', desc: '全程配合，你carry我辅助，输了不甩锅，我保证！', count: 0 },
                 { name: '打蛋仔派对', img: '🥚', tag: '最爱', tagType: 'love', desc: '小红保驾护航，输了算我炸单', count: 0 },
                 { name: '随便玩你选', img: '🎲', tag: '自由点', tagType: 'free', desc: '你说玩什么就玩什么，永远奉陪', count: 0 },
-                { name: '其他', img: '✨', tag: '自定义', tagType: 'free', desc: '想玩别的游戏？', count: 0 }
             ]
         },
         {
