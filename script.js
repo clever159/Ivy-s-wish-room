@@ -244,16 +244,20 @@ function sendToPushDeer(orderList) {
     const text = `🔔 新订单：\n${orderList.map(item => `• ${item.name} x${item.count}`).join('\n')}\n合计：${state.totalCount}件`;
     const url = `https://api2.pushdeer.com/message/push?pushkey=${chefPushKey}&text=${encodeURIComponent(text)}`;
 
-    // PushDeer API 通常允许跨域，或者可以通过 mode: 'no-cors' 发起“火后即忘”请求
+    // 尝试使用 fetch 发送
     fetch(url, { mode: 'no-cors' })
         .then(() => {
-            showToast('已通过 PushDeer 呼叫大厨！🚀');
+            // no-cors 模式下无法判断是否真的成功，但通常只要不报错就是发出了
+            showToast('呼叫请求已发出！🚀\n请等待大厨确认');
             clearCart();
         })
         .catch(err => {
-            console.error(err);
-            showToast('PushDeer 发送失败，尝试飞书...');
-            sendToFeishu(orderList);
+            console.error('Fetch failed, trying image fallback:', err);
+            // 备选方案：利用 <img> 标签绕过一些极其严格的跨域限制
+            const img = new Image();
+            img.src = url;
+            showToast('呼叫请求已发出(备选通道)！🚀');
+            clearCart();
         });
 }
 
@@ -301,7 +305,7 @@ function sendToFeishu(orderList) {
         }
     }).catch(err => {
         console.error(err);
-        showModal('🚫 发送失败', `原因：浏览器跨域安全限制 (CORS)。\n\n网页版无法直接请求飞书接口。建议：\n1. 使用微信小程序版（已配置合法域名）\n2. 或者联系大厨手动截图发送`);
+        showModal('⚠️ 自动呼叫失败', `由于浏览器安全限制，无法自动通知大厨。\n\n请点击下方按钮复制清单，手动发送给大厨：\n\n${orderList.map(item => `• ${item.name} x${item.count}`).join('\n')}`);
     });
 }
 
