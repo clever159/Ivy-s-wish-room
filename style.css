@@ -84,6 +84,7 @@ body {
     display: flex;
     flex: 1;
     overflow: hidden;
+    height: 0; /* 关键：强制 flex 子项在剩余空间内滚动 */
 }
 .sidebar {
     width: 80px;
@@ -91,6 +92,8 @@ body {
     border-right: 0.5px solid #EDE8FF;
     height: 100%;
     overflow-y: auto;
+    -webkit-overflow-scrolling: touch; /* 增强手机端滑动流畅度 */
+    padding-bottom: 80px; /* 为底部栏留出空间，防止最后一个分类被遮挡 */
 }
 .cat-item {
     padding: 15px 6px;
