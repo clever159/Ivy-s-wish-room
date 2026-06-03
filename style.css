@@ -411,11 +411,12 @@ body {
     font-weight: 500;
     cursor: pointer;
 }
+#modal-confirm {
+    background: #8B5CF6; /* 使用紫色作为确认按钮背景 */
+    color: #fff;
+    font-weight: bold;
+}
 #modal-cancel {
     background: #F3F4F6;
     color: #6B7280;
-}
-#modal-confirm {
-    background: var(--brand);
-    color: #fff;
 }
