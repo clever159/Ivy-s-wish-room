@@ -7,6 +7,7 @@ const state = {
             id: 'c1', name: '注意！', emoji: '📢',
             dishes: [
                 { name: '注意！不可贪心！想一下能不能吃！', img: '⚠️', tag: '店规', tagType: 'rare', desc: '大厨会尽力完成，但保留因懒取消的权利 🫡', isRule: true, count: 0 },
+                { name: '其他', img: '✨', tag: '自定义', tagType: 'free', desc: '想让大厨做点别的？在这里备注说明吧', count: 0 }
             ]
         },
         {
@@ -83,41 +84,55 @@ const state = {
                 { name: '需要静一静', img: './images/quiet.png?v=1713', tag: '呵护', tagType: 'love', count: 0 },
                 { name: '其他', img: '✨', tag: '自定义', tagType: 'free', desc: '有别的充电方式？', count: 0 }
             ]
-        }
-        ,
+        },
         {
             id: 'c10', name: '其他', emoji: '🎲',
             dishes: [
-                { name: '其他', img: '✨', tag: '自定义', tagType: 'free', desc: '有别的充电方式？', count: 0 }
+                { name: '其他', img: '✨', tag: '自定义', tagType: 'free', desc: '有别的需求？在这里备注说明吧', count: 0 }
             ]
         }
-            
     ]
 };
 
-// 初始化 DOM 引用
-const sidebar = document.getElementById('sidebar');
-const mainContent = document.getElementById('main-content');
-const totalBadge = document.getElementById('total-badge');
-const submitBtn = document.getElementById('submit-btn');
-const modalOverlay = document.getElementById('modal-overlay');
-const modalTitle = document.getElementById('modal-title');
-const modalContent = document.getElementById('modal-content');
-const modalCancel = document.getElementById('modal-cancel');
-const modalConfirm = document.getElementById('modal-confirm');
-
-// 视图切换引用
-const orderView = document.getElementById('order-view');
-const historyView = document.getElementById('history-view');
-const tabOrder = document.getElementById('tab-order');
-const tabHistory = document.getElementById('tab-history');
-const historyList = document.getElementById('history-list');
-
-// 大厨推送 Key (已硬编码)
+// 大厨推送 Key
 const chefPushKey = 'PDU41838T1UA7OqObxkpYSVZQ0ULhS9rA1Qz44qOl';
 
-// 标签切换逻辑
+// 初始化
+function init() {
+    try {
+        window.dom = {
+            sidebar: document.getElementById('sidebar'),
+            mainContent: document.getElementById('main-content'),
+            totalBadge: document.getElementById('total-badge'),
+            submitBtn: document.getElementById('submit-btn'),
+            modalOverlay: document.getElementById('modal-overlay'),
+            modalTitle: document.getElementById('modal-title'),
+            modalContent: document.getElementById('modal-content'),
+            modalCancel: document.getElementById('modal-cancel'),
+            modalConfirm: document.getElementById('modal-confirm'),
+            orderView: document.getElementById('order-view'),
+            historyView: document.getElementById('history-view'),
+            tabOrder: document.getElementById('tab-order'),
+            tabHistory: document.getElementById('tab-history'),
+            historyList: document.getElementById('history-list')
+        };
+
+        if (!window.dom.sidebar || !window.dom.mainContent) {
+            console.error('关键 DOM 节点缺失');
+            return;
+        }
+
+        renderSidebar();
+        renderMain();
+        calculateTotal();
+    } catch (e) {
+        console.error('初始化失败:', e);
+    }
+}
+
+// 视图切换逻辑
 window.switchTab = (tab) => {
+    const { orderView, historyView, tabOrder, tabHistory } = window.dom;
     if (tab === 'order') {
         orderView.style.display = 'flex';
         historyView.style.display = 'none';
@@ -132,20 +147,25 @@ window.switchTab = (tab) => {
     }
 };
 
-// 历史订单存储逻辑
+// 历史订单逻辑
 function saveOrderToHistory(orderList) {
-    const history = JSON.parse(localStorage.getItem('orderHistory') || '[]');
-    const newOrder = {
-        id: Date.now(),
-        time: new Date().toLocaleString(),
-        items: orderList
-    };
-    history.unshift(newOrder); // 新订单排在最前面
-    localStorage.setItem('orderHistory', JSON.stringify(history));
+    try {
+        const history = JSON.parse(localStorage.getItem('orderHistory') || '[]');
+        const newOrder = {
+            id: Date.now(),
+            time: new Date().toLocaleString(),
+            items: orderList
+        };
+        history.unshift(newOrder);
+        localStorage.setItem('orderHistory', JSON.stringify(history));
+    } catch (e) {
+        console.error('保存历史失败:', e);
+    }
 }
 
 function renderHistory() {
     const history = JSON.parse(localStorage.getItem('orderHistory') || '[]');
+    const { historyList } = window.dom;
     if (history.length === 0) {
         historyList.innerHTML = '<div class="empty-history">暂无历史投喂记录 🫡</div>';
         return;
@@ -165,9 +185,9 @@ function renderHistory() {
     `).join('');
 }
 
-// 渲染侧边栏
+// 渲染逻辑
 function renderSidebar() {
-    sidebar.innerHTML = state.categories.map((cat, index) => `
+    window.dom.sidebar.innerHTML = state.categories.map((cat, index) => `
         <div class="cat-item ${state.activeCategoryIndex === index ? 'active' : ''}" 
              onclick="onCategoryTap('${cat.id}', ${index})">
             <span class="cat-emoji">${cat.emoji}</span>${cat.name}
@@ -175,9 +195,8 @@ function renderSidebar() {
     `).join('');
 }
 
-// 渲染菜品列表
 function renderMain() {
-    mainContent.innerHTML = state.categories.map((cat, cIdx) => `
+    window.dom.mainContent.innerHTML = state.categories.map((cat, cIdx) => `
         <div id="${cat.id}">
             <div class="cat-header">${cat.emoji} ${cat.name}<span class="cat-count">(${cat.dishes.length})</span></div>
             ${cat.dishes.map((dish, dIdx) => `
@@ -197,7 +216,6 @@ function renderMain() {
                         </div>
                         <div class="dish-desc">${dish.desc || ''}</div>
                         
-                        <!-- 备注区域 -->
                         <div class="remark-area" onclick="event.stopPropagation()">
                             <textarea 
                                 class="remark-input" 
@@ -232,7 +250,7 @@ function renderMain() {
     `).join('');
 }
 
-// 备注处理逻辑
+// 备注处理
 window.onRemarkInput = (cIdx, dIdx, val) => {
     state.categories[cIdx].dishes[dIdx].remark = val;
 };
@@ -254,7 +272,7 @@ window.removePhoto = (cIdx, dIdx) => {
     renderMain();
 };
 
-// 事件处理
+// 业务逻辑
 window.onCategoryTap = (id, index) => {
     state.activeCategoryIndex = index;
     renderSidebar();
@@ -280,8 +298,10 @@ window.dec = (cIdx, dIdx) => {
 
 window.onDishTap = (cIdx, dIdx) => {
     const el = document.getElementById(`dish-${cIdx}-${dIdx}`);
-    el.classList.add('bump');
-    setTimeout(() => el.classList.remove('bump'), 150);
+    if(el) {
+        el.classList.add('bump');
+        setTimeout(() => el.classList.remove('bump'), 150);
+    }
 };
 
 function calculateTotal() {
@@ -293,12 +313,16 @@ function calculateTotal() {
     });
     state.totalCount = total;
     
-    totalBadge.innerText = total;
-    totalBadge.classList.toggle('show', total > 0);
-    submitBtn.classList.toggle('on', total > 0);
+    if (window.dom.totalBadge) {
+        window.dom.totalBadge.innerText = total;
+        window.dom.totalBadge.classList.toggle('show', total > 0);
+    }
+    if (window.dom.submitBtn) {
+        window.dom.submitBtn.classList.toggle('on', total > 0);
+    }
 }
 
-// 随机选菜
+// 下单逻辑
 document.getElementById('rand-btn').onclick = () => {
     let validDishes = [];
     state.categories.forEach((cat, cIdx) => {
@@ -316,18 +340,17 @@ document.getElementById('rand-btn').onclick = () => {
 
     setTimeout(() => {
         const el = document.getElementById(`dish-${pick.cIdx}-${pick.dIdx}`);
-        el.classList.add('bump');
+        if(el) el.classList.add('bump');
         
         if (state.totalCount < 3) {
             inc(pick.cIdx, pick.dIdx);
         } else {
             showToast('帮抽到了好吃的，但你已经点满3件啦！');
         }
-        setTimeout(() => el.classList.remove('bump'), 150);
+        if(el) setTimeout(() => el.classList.remove('bump'), 150);
     }, 300);
 };
 
-// 下单逻辑
 document.getElementById('submit-btn').onclick = () => {
     if (state.totalCount === 0) return;
 
@@ -348,11 +371,7 @@ document.getElementById('submit-btn').onclick = () => {
     const alertContent = orderList.map(item => `• ${item.name} x${item.count}${item.hasPhoto ? ' [带图]' : ''}\n  备注：${item.remark}`).join('\n');
     
     showModal('💖 专属订单确认', `确定要向大厨发送以下投喂申请吗？\n\n${alertContent}`, () => {
-        if (chefPushKey) {
-            sendToPushDeer(orderList);
-        } else {
-            sendToFeishu(orderList);
-        }
+        sendToPushDeer(orderList);
     });
 };
 
@@ -362,68 +381,17 @@ function sendToPushDeer(orderList) {
 
     fetch(url, { mode: 'no-cors' })
         .then(() => {
-            // no-cors 模式下无法判断是否真的成功，但通常只要不报错就是发出了
             showToast('呼叫请求已发出！🚀\n请等待大厨确认');
-            saveOrderToHistory(orderList); // 保存到历史记录
+            saveOrderToHistory(orderList);
             clearCart();
         })
         .catch(err => {
-            console.error('Fetch failed, trying image fallback:', err);
-            // 备选方案：利用 <img> 标签绕过一些极其严格的跨域限制
             const img = new Image();
             img.src = url;
             showToast('呼叫请求已发出(备选通道)！🚀');
-            saveOrderToHistory(orderList); // 保存到历史记录
+            saveOrderToHistory(orderList);
             clearCart();
         });
-}
-
-function sendToFeishu(orderList) {
-    const feishuWebhookUrl = 'https://open.feishu.cn/open-apis/bot/v2/hook/4987f535-5fde-4987-933d-455830978aa9';
-    
-    const feishuElements = orderList.map(item => {
-        return [
-            { tag: "text", text: " ◉  " },
-            { tag: "text", text: `${item.name} `, style: ["bold"] },
-            { tag: "text", text: `x${item.count} `, style: ["bold"] },
-            { tag: "text", text: `\n    备注：${item.remark}${item.hasPhoto ? ' [带图]' : ''}` }
-        ];
-    });
-
-    feishuElements.push([
-        { tag: "text", text: `\n-----------------------------------\n` },
-        { tag: "text", text: `合计数量：`, style: ["bold"] },
-        { tag: "text", text: `${state.totalCount} 件宝贝\n` },
-        { tag: "text", text: `🏃‍♂️ 请大厨快快起锅烧油，提鞋赶来！` }
-    ]);
-
-    fetch(feishuWebhookUrl, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-            msg_type: "post",
-            content: {
-                post: {
-                    zh_cn: {
-                        title: "🔔 专属小馆：您有一份新的喂食订单！",
-                        content: feishuElements
-                    }
-                }
-            }
-        })
-    }).then(res => res.json())
-    .then(data => {
-        if (data.code === 0) {
-            showToast('大厨手机已震动！🚀');
-            saveOrderToHistory(orderList); // 保存到历史记录
-            clearCart();
-        } else {
-            showToast('飞书接口报错：' + data.msg);
-        }
-    }).catch(err => {
-        console.error(err);
-        showModal('⚠️ 自动呼叫失败', `由于浏览器安全限制，无法自动通知大厨。\n\n请点击下方按钮复制清单，手动发送给大厨：\n\n${orderList.map(item => `• ${item.name} x${item.count}`).join('\n')}`);
-    });
 }
 
 function clearCart() {
@@ -438,33 +406,29 @@ function clearCart() {
     renderMain();
 }
 
-// UI 辅助
 function showToast(msg) {
     alert(msg);
 }
 
 function showModal(title, content, onConfirm) {
-    modalTitle.innerText = title;
-    modalContent.innerText = content;
-    modalOverlay.classList.add('show');
+    window.dom.modalTitle.innerText = title;
+    window.dom.modalContent.innerText = content;
+    window.dom.modalOverlay.classList.add('show');
     
-    modalConfirm.onclick = () => {
-        modalOverlay.classList.remove('show');
+    window.dom.modalConfirm.onclick = () => {
+        window.dom.modalOverlay.classList.remove('show');
         onConfirm();
     };
-    modalCancel.onclick = () => {
-        modalOverlay.classList.remove('show');
+    window.dom.modalCancel.onclick = () => {
+        window.dom.modalOverlay.classList.remove('show');
     };
 }
 
-// 分享
 document.getElementById('share-btn').onclick = () => {
-    const url = window.location.href;
-    navigator.clipboard.writeText(url).then(() => {
+    navigator.clipboard.writeText(window.location.href).then(() => {
         showToast('链接已复制，快去分享吧！');
     });
 };
 
-// 初始化渲染 (v1.0.4 - Last Sync: 2026-06-03)
-renderSidebar();
-renderMain();
+// 启动
+init();
