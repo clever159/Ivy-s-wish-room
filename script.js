@@ -273,11 +273,11 @@ function sendToFeishu(orderList) {
             showToast('大厨手机已震动！🚀');
             clearCart();
         } else {
-            showToast('发送失败，请检查配置');
+            showToast('飞书接口报错：' + data.msg);
         }
     }).catch(err => {
         console.error(err);
-        showToast('发送失败(可能是跨域限制)');
+        showModal('🚫 发送失败', `原因：浏览器跨域安全限制 (CORS)。\n\n网页版无法直接请求飞书接口。建议：\n1. 使用微信小程序版（已配置合法域名）\n2. 或者联系大厨手动截图发送`);
     });
 }
 
