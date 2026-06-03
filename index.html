@@ -39,7 +39,10 @@
 
         <!-- 历史订单布局 -->
         <div class="history-layout" id="history-view" style="display: none;">
-            <div class="history-header">已完成的投喂记录</div>
+            <div class="history-header">
+                <span>已完成的投喂记录</span>
+                <button class="clear-all-btn" id="clear-history-btn" onclick="clearAllHistory()">清空记录</button>
+            </div>
             <div id="history-list" class="history-list">
                 <!-- 动态渲染历史订单 -->
             </div>

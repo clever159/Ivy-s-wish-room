@@ -162,6 +162,20 @@ function saveOrderToHistory(orderList) {
     }
 }
 
+window.deleteOrder = (id) => {
+    if (!confirm('确定要删除这笔记录吗？')) return;
+    const history = JSON.parse(localStorage.getItem('orderHistory') || '[]');
+    const newHistory = history.filter(order => order.id !== id);
+    localStorage.setItem('orderHistory', JSON.stringify(newHistory));
+    renderHistory();
+};
+
+window.clearAllHistory = () => {
+    if (!confirm('确定要清空所有历史记录吗？')) return;
+    localStorage.removeItem('orderHistory');
+    renderHistory();
+};
+
 function renderHistory() {
     const history = JSON.parse(localStorage.getItem('orderHistory') || '[]');
     const { historyList } = window.dom;
@@ -174,11 +188,15 @@ function renderHistory() {
         <div class="history-item">
             <div class="history-time">
                 <span>📅 ${order.time}</span>
-                <span style="color:var(--brand)">已送达</span>
+                <div style="display:flex; align-items:center; gap:8px;">
+                    <span style="color:var(--brand)">已送达</span>
+                    <span class="del-order-btn" onclick="deleteOrder(${order.id})">×</span>
+                </div>
             </div>
             ${order.items.map(item => `
                 <div class="history-dish">${item.name} x${item.count}</div>
                 ${item.remark !== '无备注' ? `<div class="history-remark">💬 ${item.remark}</div>` : ''}
+                ${item.photo ? `<img src="${item.photo}" class="history-photo" onclick="window.open('${item.photo}')">` : ''}
             `).join('')}
         </div>
     `).join('');
@@ -361,7 +379,8 @@ document.getElementById('submit-btn').onclick = () => {
                     name: dish.name, 
                     count: dish.count,
                     remark: dish.remark || '无备注',
-                    hasPhoto: !!dish.remarkPhoto
+                    hasPhoto: !!dish.remarkPhoto,
+                    photo: dish.remarkPhoto // 保存图片数据到历史记录
                 });
             }
         });
