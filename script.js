@@ -6,8 +6,7 @@ const state = {
         {
             id: 'c1', name: '注意！', emoji: '📢',
             dishes: [
-                { name: '注意！不可贪心！想一下能不能吃！', img: '⚠️', tag: '店规', tagType: 'rare', desc: '大厨会尽力完成，但保留因懒取消的权利 🫡', isRule: true, count: 0 },
-                { name: '其他', img: '✨', tag: '自定义', tagType: 'free', desc: '想让大厨做点别的？在这里备注说明吧', count: 0 }
+                { name: '注意！不可贪心！想一下能不能吃！', img: '⚠️', tag: '店规', tagType: 'rare', desc: '大厨会尽力完成，但保留因懒取消的权利 🫡', isRule: true, count: 0 }
             ]
         },
         {
@@ -29,21 +28,11 @@ const state = {
                 { name: '香辣烤面筋', img: '🍢', tag: '深夜灵魂', tagType: 'hot', desc: '可能没那么想吃吧', count: 0 },
                 { name: '糖醋铁板烧', img: '🍱', tag: '独家', tagType: 'love', desc: '宝藏小店',  count: 0 },
                 { name: '烤冷面', img: '🍱', tag: '东北味儿', tagType: 'love', desc: '我俩还是一起去买吧',  count: 0 },
-                { name: '其他', img: '✨', tag: '自定义', tagType: 'free', desc: '想吃点别的？备注说明', count: 0 }
-            ]
-        },
-        {
-            id: 'c4', name: '快餐', emoji: '🍔',
-            dishes: [
+                { name: '其他', img: '✨', tag: '自定义', tagType: 'free', desc: '想吃点别的？备注说明', count: 0 },
                 { name: "McDonald's", img: '🍟', tag: '神圣', tagType: 'hot', desc: '我钟意食牡丹楼', count: 0 },
                 { name: 'Taco / 塔克星', img: '🌮', tag: '新品', tagType: 'new', desc: 'Taco Tuesday!', count: 0 },
                 { name: 'KFC', img: '🍗', tag: '疯四限定', tagType: 'hot', desc: '不用V我50', count: 0 },
-                { name: '其他', img: '✨', tag: '自定义', tagType: 'free', desc: '想吃点别的？备注说明', count: 0 }
-            ]
-        },
-        {
-            id: 'c5', name: '甜点', emoji: '🎂',
-            dishes: [
+                { name: '其他', img: '✨', tag: '自定义', tagType: 'free', desc: '想吃点别的？备注说明', count: 0 },
                 { name: '蛋糕', img: '🎂', tag: '随时可点', tagType: 'love', desc: '想吃蛋糕需要什么理由呢', count: 0 },
                 { name: '滨寿司', img: '🍣', tag: '漂亮饭', tagType: 'love', desc: '不要再错过排队了！', count: 0 },
                 { name: '零食大礼包', img: '🍩', tag: '上新', tagType: 'new', desc: '超市自选，推着购物车跟你走', count: 0 },
@@ -60,18 +49,17 @@ const state = {
             ]
         },
         {
-            id: 'c7', name: '游戏局', emoji: '🎮',
+            id: 'c5', name: '游戏局', emoji: '🎮',
             dishes: [
                 { name: '打王者', img: '👑', tag: '开黑', tagType: 'hot', desc: '全程配合，你carry我辅助，输了不甩锅，我保证！', count: 0 },
                 { name: '打蛋仔派对', img: '🥚', tag: '最爱', tagType: 'love', desc: '小红保驾护航，输了算我炸单', count: 0 },
                 { name: '瓦', img: 'images/valorant.png', tag: '随缘', tagType: 'love', desc: 'fps界的低山臭水来了', count: 0 },
                 { name: '双人成行', img: 'images/ittakestwo.png', tag: '随缘', tagType: 'love', desc: '哪有打不过怪美甲的啊', count: 0 },
-                { name: '随便玩你选', img: '🎲', tag: '自由点', tagType: 'free', desc: '你说玩什么就玩什么，永远奉陪', count: 0 },
-                { name: '其他', img: '✨', tag: '自定义', tagType: 'free', desc: '想玩别的游戏？', count: 0 }
+                { name: '随便玩你选', img: '🎲', tag: '自由点', tagType: 'free', desc: '你说玩什么就玩什么，永远奉陪', count: 0 }
             ]
         },
         {
-            id: 'c8', name: '约会局', emoji: '🌅',
+            id: 'c6', name: '约会局', emoji: '🌅',
             dishes: [
                 { name: '湖边坐着发呆', img: '🌊', tag: '情侣套餐', tagType: 'love', desc: '挑眉emoji', count: 0 },
                 { name: '逛街（背包服务）', img: '🛍️', tag: '体力活', tagType: 'hot', desc: '在我手上试妆ba', count: 0 },
@@ -93,7 +81,7 @@ const state = {
             ]
         },
         {
-            id: 'c10', name: '其他', emoji: '⚠️',
+            id: 'c8', name: '其他', emoji: '⚠️',
             dishes: [
                 { name: '骚扰大厨', img: '✨', tag: '自定义', tagType: 'free', desc: '有别的需求？在这里备注说明吧', count: 0 }
             ]
