@@ -25,14 +25,14 @@ const state = {
             dishes: [
                 { name: '淀粉肠 / 花刀肠', img: 'images/sossage.png?v=2', tag: '香', tagType: 'hot', desc: '世界上最大的超市特有', count: 0 },
                 { name: '麻辣烫基础套餐', img: '', tag: '必点', tagType: 'hot', desc: '有别的想加的备注上', count: 0 },
-                { name: '香辣烤面筋', img: '�', tag: '深夜灵魂', tagType: 'hot', desc: '可能没那么想吃吧', count: 0 },
-                { name: '糖醋铁板烧', img: '�', tag: '独家', tagType: 'love', desc: '宝藏小店',  count: 0 },
+                { name: '香辣烤面筋', img: '🍢', tag: '深夜灵魂', tagType: 'hot', desc: '可能没那么想吃吧', count: 0 },
+                { name: '糖醋铁板烧', img: '🍱', tag: '独家', tagType: 'love', desc: '宝藏小店',  count: 0 },
                 { name: '烤冷面', img: '🍱', tag: '东北味儿', tagType: 'love', desc: '我俩还是一起去买吧',  count: 0 },
                 { name: '其他', img: '✨', tag: '自定义', tagType: 'free', desc: '想吃点别的？备注说明', count: 0 }
             ]
         },
         {
-            id: 'c4', name: '快餐', emoji: '�',
+            id: 'c4', name: '快餐', emoji: '🍔',
             dishes: [
                 { name: "McDonald's", img: '🍟', tag: '神圣', tagType: 'hot', desc: '我钟意食牡丹楼', count: 0 },
                 { name: 'Taco / 塔克星', img: '🌮', tag: '新品', tagType: 'new', desc: 'Taco Tuesday!', count: 0 },
