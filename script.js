@@ -87,7 +87,7 @@ const state = {
             dishes: [
                 { name: '一起自习', img: '📖', tag: '高效', tagType: 'free', desc: '', count: 0 },
                 { name: '不开心', img: 'images/sad.png?v=2', tag: 'emo', tagType: 'rare', desc: '找我聊天吧', count: 0 },
-                { name: '生气了，需要哄', img: 'images/mad.png?v=2', tag: '呵护', tagType: 'love', desc: '想咬人的来', count: 0 },
+                { name: '生气了，需要哄', img: '💆', tag: '呵护', tagType: 'love', desc: '想咬人的来', count: 0 },
                 { name: '需要静一静', img: 'images/quiet.png?v=2', count: 0 },
                 { name: '其他', img: '✨', tag: '自定义', tagType: 'free', desc: '有别的充电方式？', count: 0 }
             ]
