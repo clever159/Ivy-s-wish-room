@@ -6,33 +6,44 @@ const state = {
         {
             id: 'c1', name: '注意！', emoji: '📢',
             dishes: [
-                { name: '注意！不可贪心！想一下能不能吃！', img: '⚠️', tag: '店规', tagType: 'rare', desc: '大厨会尽力完成，但保留因懒取消的权利 🫡', isRule: true, count: 0 }
+                { name: '注意！不可贪心！想一下能不能吃！', img: '⚠️', tag: '店规', tagType: 'rare', desc: '大厨会尽力完成，但保留因懒取消的权利 🫡', isRule: true, count: 0 },
+                { name: '其他', img: '✨', tag: '自定义', tagType: 'free', desc: '想让大厨做点别的？在这里备注说明吧', count: 0 }
             ]
         },
         {
             id: 'c2', name: '喝的', emoji: '🧋',
             dishes: [
-                { name: '奶茶', img: 'images/milktea.png', tag: '热门', tagType: 'hot', desc: '瑞幸/霸王茶姬/茶百道/喜茶/雪王随你选，备注口味甜度', count: 0 },
+                { name: '奶茶', img: 'images/milktea.png?v=2', tag: '热门', tagType: 'hot', desc: '瑞幸/霸王茶姬/茶百道/喜茶/雪王随你选，备注口味甜度', count: 0 },
                 { name: '西瓜冰', img: '🍉', tag: '夏日必备', tagType: 'hot', count: 0 },
                 { name: '冰沙', img: '🍧', tag: '热门', tagType: 'hot', desc: '听说黄瓜味的很好吃哦', count: 0 },
-                { name: '尖叫', img: 'images/drink/jjblue.png', tag: '挤着喝', tagType: 'new', desc: '备注颜色', count: 0 },
-                { name: '营养快线', img: 'images/drink/yykx.png', tag: '酸奶饮料', tagType: 'free', desc: '备注口味', count: 0 },
+                { name: '尖叫', img: 'images/drink/jjblue.png?v=2', tag: '挤着喝', tagType: 'new', desc: '备注颜色', count: 0 },
+                { name: '营养快线', img: 'images/drink/yykx.png?v=2', tag: '酸奶饮料', tagType: 'free', desc: '备注口味', count: 0 },
                 { name: '其他', img: '✨', tag: '自定义', tagType: 'free', desc: '想喝点别的？备注说明', count: 0 }
             ]
         },
         {
             id: 'c3', name: '路边摊', emoji: '🍢',
             dishes: [
-                { name: '淀粉肠 / 花刀肠', img: 'images/sossage.png', tag: '香', tagType: 'hot', desc: '世界上最大的超市特有', count: 0 },
-                { name: '麻辣烫基础套餐', img: '🍲', tag: '必点', tagType: 'hot', desc: '有别的想加的备注上', count: 0 },
-                { name: '香辣烤面筋', img: '🍢', tag: '深夜灵魂', tagType: 'hot', desc: '可能没那么想吃吧', count: 0 },
-                { name: '糖醋铁板烧', img: '🍱', tag: '独家', tagType: 'love', desc: '宝藏小店',  count: 0 },
+                { name: '淀粉肠 / 花刀肠', img: 'images/sossage.png?v=2', tag: '香', tagType: 'hot', desc: '世界上最大的超市特有', count: 0 },
+                { name: '麻辣烫基础套餐', img: '�', tag: '必点', tagType: 'hot', desc: '有别的想加的备注上', count: 0 },
+                { name: '香辣烤面筋', img: '�', tag: '深夜灵魂', tagType: 'hot', desc: '可能没那么想吃吧', count: 0 },
+                { name: '糖醋铁板烧', img: '�', tag: '独家', tagType: 'love', desc: '宝藏小店',  count: 0 },
                 { name: '烤冷面', img: '🍱', tag: '东北味儿', tagType: 'love', desc: '我俩还是一起去买吧',  count: 0 },
-                { name: '其他', img: '✨', tag: '自定义', tagType: 'free', desc: '想吃点别的？备注说明', count: 0 },
+                { name: '其他', img: '✨', tag: '自定义', tagType: 'free', desc: '想吃点别的？备注说明', count: 0 }
+            ]
+        },
+        {
+            id: 'c4', name: '快餐', emoji: '�',
+            dishes: [
                 { name: "McDonald's", img: '🍟', tag: '神圣', tagType: 'hot', desc: '我钟意食牡丹楼', count: 0 },
-                { name: 'Taco / 塔克星', img: '🌮', tag: '新品', tagType: 'new', desc: 'Taco Tuesday!', count: 0 },
-                { name: 'KFC', img: '🍗', tag: '疯四限定', tagType: 'hot', desc: '不用V我50', count: 0 },
-                { name: '其他', img: '✨', tag: '自定义', tagType: 'free', desc: '想吃点别的？备注说明', count: 0 },
+                { name: 'Taco / 塔克星', img: '�', tag: '新品', tagType: 'new', desc: 'Taco Tuesday!', count: 0 },
+                { name: 'KFC', img: '�', tag: '疯四限定', tagType: 'hot', desc: '不用V我50', count: 0 },
+                { name: '其他', img: '✨', tag: '自定义', tagType: 'free', desc: '想吃点别的？备注说明', count: 0 }
+            ]
+        },
+        {
+            id: 'c5', name: '甜点', emoji: '🎂',
+            dishes: [
                 { name: '蛋糕', img: '🎂', tag: '随时可点', tagType: 'love', desc: '想吃蛋糕需要什么理由呢', count: 0 },
                 { name: '滨寿司', img: '🍣', tag: '漂亮饭', tagType: 'love', desc: '不要再错过排队了！', count: 0 },
                 { name: '零食大礼包', img: '🍩', tag: '上新', tagType: 'new', desc: '超市自选，推着购物车跟你走', count: 0 },
@@ -49,24 +60,25 @@ const state = {
             ]
         },
         {
-            id: 'c5', name: '游戏局', emoji: '🎮',
+            id: 'c7', name: '游戏局', emoji: '🎮',
             dishes: [
                 { name: '打王者', img: '👑', tag: '开黑', tagType: 'hot', desc: '全程配合，你carry我辅助，输了不甩锅，我保证！', count: 0 },
                 { name: '打蛋仔派对', img: '🥚', tag: '最爱', tagType: 'love', desc: '小红保驾护航，输了算我炸单', count: 0 },
-                { name: '瓦', img: 'images/valorant.png', tag: '随缘', tagType: 'love', desc: 'fps界的低山臭水来了', count: 0 },
-                { name: '双人成行', img: 'images/ittakestwo.png', tag: '随缘', tagType: 'love', desc: '哪有打不过怪美甲的啊', count: 0 },
-                { name: '随便玩你选', img: '🎲', tag: '自由点', tagType: 'free', desc: '你说玩什么就玩什么，永远奉陪', count: 0 }
+                { name: '瓦', img: 'images/valorant.png?v=2', tag: '随缘', tagType: 'love', desc: 'fps界的低山臭水来了', count: 0 },
+                { name: '双人成行', img: 'images/ittakestwo.png?v=2', tag: '随缘', tagType: 'love', desc: '哪有打不过怪美甲的啊', count: 0 },
+                { name: '随便玩你选', img: '🎲', tag: '自由点', tagType: 'free', desc: '你说玩什么就玩什么，永远奉陪', count: 0 },
+                { name: '其他', img: '✨', tag: '自定义', tagType: 'free', desc: '想玩别的游戏？', count: 0 }
             ]
         },
         {
-            id: 'c6', name: '约会局', emoji: '🌅',
+            id: 'c8', name: '约会局', emoji: '🌅',
             dishes: [
                 { name: '湖边坐着发呆', img: '🌊', tag: '情侣套餐', tagType: 'love', desc: '挑眉emoji', count: 0 },
                 { name: '逛街（背包服务）', img: '🛍️', tag: '体力活', tagType: 'hot', desc: '在我手上试妆ba', count: 0 },
                 { name: '陪你看电影', img: '🎬', tag: '限时', tagType: 'new', desc: '看电影有点暧昧了', count: 0 },
                 { name: '拼豆', img: 'o((⊙﹏⊙))o.', tag: '创意', tagType: 'new', desc: '一个屋子一待就是一天', count: 0 },
                 { name: '夜晚散步', img: '🌙', tag: '浪漫', tagType: 'love', desc: '这项有点多余', count: 0 },
-                { name: '接放学', img: 'images/qinzi.png', tag: '亲子', tagType: 'love', desc: '别的小孩儿放学都有人接', count: 0 },
+                { name: '接放学', img: 'images/qinzi.png?v=2', tag: '亲子', tagType: 'love', desc: '别的小孩儿放学都有人接', count: 0 },
                 { name: '其他', img: '✨', tag: '自定义', tagType: 'free', desc: '有别的约会计划？', count: 0 }
             ]
         },
@@ -74,14 +86,14 @@ const state = {
             id: 'c9', name: '充电局', emoji: '📚',
             dishes: [
                 { name: '一起自习', img: '📖', tag: '高效', tagType: 'free', desc: '', count: 0 },
-                { name: '不开心', img: 'images/sad.png', tag: 'emo', tagType: 'rare', desc: '找我聊天吧', count: 0 },
+                { name: '不开心', img: 'images/sad.png?v=2', tag: 'emo', tagType: 'rare', desc: '找我聊天吧', count: 0 },
                 { name: '生气了，需要哄', img: '💆', tag: '呵护', tagType: 'love', desc: '想咬人的来', count: 0 },
-                { name: '需要静一静', img: 'images/quiet.png', count: 0 },
+                { name: '需要静一静', img: 'images/quiet.png?v=2', count: 0 },
                 { name: '其他', img: '✨', tag: '自定义', tagType: 'free', desc: '有别的充电方式？', count: 0 }
             ]
         },
         {
-            id: 'c8', name: '其他', emoji: '⚠️',
+            id: 'c10', name: '其他', emoji: '⚠️',
             dishes: [
                 { name: '骚扰大厨', img: '✨', tag: '自定义', tagType: 'free', desc: '有别的需求？在这里备注说明吧', count: 0 }
             ]
@@ -214,13 +226,13 @@ function renderMain() {
             ${cat.dishes.map((dish, dIdx) => `
                 <div class="dish" id="dish-${cIdx}-${dIdx}" onclick="onDishTap(${cIdx}, ${dIdx})">
                     <div class="dish-img">
-                        ${dish.img.length > 4 ? `<img src="${dish.img}" alt="${dish.name}">` : `<span>${dish.img}</span>`}
+                        ${(dish.img && dish.img.length > 4) ? `<img src="${dish.img}" alt="${dish.name}">` : `<span>${dish.img || '✨'}</span>`}
                         ${dish.isSoldOut ? `<div class="sold-mask">补货中</div>` : ''}
                     </div>
                     <div class="dish-body">
                         <div class="dish-name">
                             ${dish.name}
-                            <span class="pill p-${dish.tagType}">${dish.tag}</span>
+                            <span class="pill p-${dish.tagType || 'free'}">${dish.tag || ''}</span>
                         </div>
                         <div class="stars-row">
                             <span class="star-i">★★★★★</span>
@@ -264,7 +276,8 @@ window.onRemarkInput = (cIdx, dIdx, val) => {
 window.onCategoryTap = (id, index) => {
     state.activeCategoryIndex = index;
     renderSidebar();
-    document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: 'smooth' });
 };
 
 window.inc = (cIdx, dIdx) => {
@@ -296,7 +309,7 @@ function calculateTotal() {
     let total = 0;
     state.categories.forEach(cat => {
         cat.dishes.forEach(dish => {
-            total += dish.count;
+            total += (dish.count || 0);
         });
     });
     state.totalCount = total;
@@ -386,7 +399,6 @@ function clearCart() {
         cat.dishes.forEach(dish => {
             dish.count = 0;
             dish.remark = '';
-            dish.remarkPhoto = null;
         });
     });
     calculateTotal();
