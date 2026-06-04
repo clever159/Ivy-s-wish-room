@@ -10,70 +10,58 @@ const state = {
             ]
         },
         {
-            id: 'c2', name: '喝的', emoji: '🧋',
-            dishes: [
-                { name: '奶茶', img: '🧋', tag: '热门', tagType: 'hot', desc: '瑞幸/霸王茶姬/茶百道/喜茶/雪王随你选，备注口味甜度', count: 0 },
-                { name: '西瓜冰', img: '🍉', tag: '夏日必备', tagType: 'hot', count: 0 },
-                { name: '尖叫', img: 'images/drink/jjblue.png', tag: '挤着喝', tagType: 'new', desc: '备注颜色', count: 0 },
-                { name: '营养快线', img: 'images/drink/yykx.png', tag: '酸奶饮料', tagType: 'free', desc: '备注口味', count: 0 },
-                { name: '其他', img: '✨', tag: '自定义', tagType: 'free', desc: '想喝点别的？备注说明', count: 0 }
-            ]
-        },
-        {
-            id: 'c3', name: '路边摊', emoji: '🍢',
-            dishes: [
-                { name: '淀粉肠 / 花刀肠', img: '🌭', tag: '香', tagType: 'hot', desc: '世界上最大的超市特有', count: 0 },
-                { name: '麻辣烫基础套餐', img: '🍲', tag: '必点', tagType: 'hot', desc: '有别的想加的备注上', count: 0 },
-                { name: '香辣烤面筋', img: '🍢', tag: '深夜灵魂', tagType: 'hot', desc: '可能没那么想吃吧', count: 0 },
-                { name: '糖醋铁板烧', img: '🍱', tag: '独家', tagType: 'love', desc: '宝藏小店',  count: 0 },
-                { name: '烤冷面', img: '🍱', tag: '东北味儿', tagType: 'love', desc: '我俩还是一起去买吧',  count: 0 },
-                { name: '其他', img: '✨', tag: '自定义', tagType: 'free', desc: '想吃点别的？备注说明', count: 0 }
-            ]
-        },
-        {
-            id: 'c4', name: '快餐', emoji: '🍔',
-            dishes: [
-                { name: "McDonald's", img: '🍟', tag: '神圣', tagType: 'hot', desc: '我钟意食牡丹楼', count: 0 },
-                { name: 'Taco / 塔克星', img: '🌮', tag: '新品', tagType: 'new', desc: 'Taco Tuesday!', count: 0 },
-                { name: 'KFC', img: '🍗', tag: '疯四限定', tagType: 'hot', desc: '不用V我50', count: 0 },
-                { name: '其他', img: '✨', tag: '自定义', tagType: 'free', desc: '想吃点别的？备注说明', count: 0 }
-            ]
-        },
-        {
-            id: 'c5', name: '甜点', emoji: '🎂',
-            dishes: [
-                { name: '蛋糕', img: '🎂', tag: '随时可点', tagType: 'love', desc: '想吃蛋糕需要什么理由呢', count: 0 },
-                { name: '零食大礼包', img: '🍩', tag: '上新', tagType: 'new', desc: '超市自选，推着购物车跟你走', count: 0 },
-                { name: '其他', img: '✨', tag: '自定义', tagType: 'free', desc: '想吃点别的？备注说明', count: 0 }
-            ]
-        },
-        {
-            id: 'c6', name: '仓鼠局', emoji: '🐹',
-            dishes: [
-                { name: '带鸡蛋出门遛弯', img: '🐹', tag: '专属', tagType: 'love', desc: '带鸡蛋出来晒太阳啃草皮', count: 0 },
-                { name: '给鸡蛋加餐', img: '🥗', tag: '营养套餐', tagType: 'new', desc: '帮你去买仓鼠零食/粮食', count: 0 },
-                { name: '鸡蛋专属写真', img: '📸', tag: '限定', tagType: 'rare', desc: '谁说我拍照不好看！', count: 0 },
-                { name: '其他', img: '✨', tag: '自定义', tagType: 'free', desc: '其他关于鸡蛋的需求？', count: 0 }
-            ]
-        },
-        {
-            id: 'c7', name: '游戏局', emoji: '🎮',
-            dishes: [
-                { name: '打王者', img: '👑', tag: '开黑', tagType: 'hot', desc: '全程配合，你carry我辅助，输了不甩锅，我保证！', count: 0 },
-                { name: '打蛋仔派对', img: '🥚', tag: '最爱', tagType: 'love', desc: '小红保驾护航，输了算我炸单', count: 0 },
-                { name: '随便玩你选', img: '🎲', tag: '自由点', tagType: 'free', desc: '你说玩什么就玩什么，永远奉陪', count: 0 },
-            ]
-        },
-        {
-            id: 'c8', name: '约会局', emoji: '🌅',
-            dishes: [
-                { name: '湖边坐着发呆', img: '🌊', tag: '情侣套餐', tagType: 'love', desc: '挑眉emoji', count: 0 },
-                { name: '逛街（背包服务）', img: '🛍️', tag: '体力活', tagType: 'hot', desc: '在我手上试妆ba', count: 0 },
-                { name: '陪你看电影', img: '🎬', tag: '限时', tagType: 'new', desc: '看电影有点暧昧了', count: 0 },
-                { name: '夜晚散步', img: '🌙', tag: '浪漫', tagType: 'love', desc: '这项有点多余', count: 0 },
-                { name: '其他', img: '✨', tag: '自定义', tagType: 'free', desc: '有别的约会计划？', count: 0 }
-            ]
-        },
+        id: 'c2', name: '喝的', emoji: '🧋',
+        dishes: [
+          { name: '奶茶', img: '🧋', tag: '热门', tagType: 'hot', desc: '瑞幸/霸王茶姬/茶百道/喜茶/雪王随你选，备注口味甜度', count: 0, price: 0, unit: '元' },
+          { name: '西瓜冰', img: '🍉', tag: '热门', tagType: 'hot', count: 0, price: 0, unit: '元' },
+          { name: '尖叫', img: '/images/drink/jjblue.png', tag: '挤着喝', tagType: 'new', desc: '备注颜色', count: 0, price: 0, unit: '元' },
+          { name: '冰沙', img: '🧋', tag: '热门', tagType: 'hot', desc: '听说黄瓜味的很好吃哦，', count: 0, price: 0, unit: '元' },
+          { name: '营养快线', img: '/images/drink/yykx.png', tag: '酸奶饮料', tagType: 'free', desc: '备注口味', count: 0, price: 0, unit: '元' }
+        ]
+      },
+      {
+        id: 'c3', name: '吃的', emoji: '🍢🍔🎂',
+        dishes: [
+          { name: '淀粉肠 / 花刀肠', img: '🌭', tag: '招牌', tagType: 'hot', desc: '烤得焦焦的，撒孜然辣椒，一起蹲着吃', count: 0, price: 0, unit: '元' },
+          { name: '麻辣烫基础套餐', img: '🍲', tag: '必点', tagType: 'hot', desc: '有别的想加的备注上', count: 0, price: 0, unit: '元' },
+          { name: '香辣烤面筋', img: '🍢', tag: '深夜灵魂', tagType: 'hot', desc: '大王叫我来巡山，抓个面筋做晚餐！多撒孜然多放辣 🌶️', count: 0, price: 0, unit: '元' },
+          { name: '糖醋铁板烧', img: '🍱', tag: '独家', tagType: 'love', desc: '酸酸甜甜就像你，一起去学校门口那家',  count: 0, price: 0, unit: '元' },
+          { name: "McDonald's", img: '🍟', tag: '神圣', tagType: 'hot', desc: '你点单我去取，疯狂星期四或周末专属福利', count: 0, price: 0, unit: '元' },
+          { name: 'Taco / 塔克星', img: '🌮', tag: '新品', tagType: 'new', desc: '一起去吃，拍照必须给你拍好看', count: 0, price: 0, unit: '元' },
+          { name: 'KFC', img: '🍗', tag: '疯四限定', tagType: 'hot', desc: '周四限定，不用V我50', count: 0, price: 0, unit: '元' },
+          { name: '蛋糕', img: '🎂', tag: '随时可点', tagType: 'love', desc: '生日/想吃/无理由均可，附手写小卡', count: 0, price: 0, unit: '元' },
+          { name: '零食大礼包', img: '🍩', tag: '上新', tagType: 'new', desc: '超市自选，大厨推着购物车跟你走', count: 0, price: 0, unit: '元' }
+        ]
+      },
+      {
+        id: 'c6', name: '仓鼠局', emoji: '🐹',
+        dishes: [
+          { name: '溜鸡蛋出门遛弯', img: '🐹', tag: '专属', tagType: 'love', desc: '带鸡蛋出来晒太阳，大厨负责拍好看的照片存档', count: 0, price: 0, unit: '元' },
+          { name: '给鸡蛋加餐', img: '🥗', tag: '营养套餐', tagType: 'new', desc: '帮你去买仓鼠零食/粮食，配送到你手', count: 0, price: 0, unit: '元' },
+          { name: '鸡蛋专属写真', img: '📸', tag: '限定', tagType: 'rare', desc: '布置场景，给鸡蛋拍一套写真，交付高清原图', count: 0, price: 0, unit: '元' }
+        ]
+      },
+      {
+        id: 'c7', name: '游戏局', emoji: '🎮',
+        dishes: [
+          { name: '打王者', img: '👑', tag: '开黑', tagType: 'hot', desc: '全程配合，你carry我辅助，输了不甩锅，我保证！', count: 0, price: 0, unit: '元' },
+          { name: '打蛋仔派对', img: '🥚', tag: '最爱', tagType: 'love', desc: '小红保驾护航，输了算我炸单', count: 0, price: 0, unit: '元' },
+          { name: '瓦', img: '🥚', tag: '随缘打', tagType: 'love', desc: 'fps界的低山臭水来了', count: 0, price: 0, unit: '元' },
+          { name: '双人成行', img: '🥚', tag: '随缘打', tagType: 'love', desc: '打不好怪美甲的来了', count: 0, price: 0, unit: '元' },
+          { name: '随便玩你选', img: '🎲', tag: '自由点', tagType: 'free', desc: '你说玩什么就玩什么，大厨永远奉陪', count: 0, price: 0, unit: '元' }
+        ]
+      },
+      {
+        id: 'c8', name: '约会局', emoji: '🌅',
+        dishes: [
+          { name: '湖边坐着发呆', img: '🌊', tag: '情侣套餐', tagType: 'love', desc: '带上零食，湖边坐到天黑，不说话也不尴尬', count: 0, price: 0, unit: '元' },
+          { name: '逛街（背包服务）', img: '🛍️', tag: '体力活', tagType: 'hot', desc: '大厨负责拿袋子、拍照、给意见，不催回家', count: 0, price: 0, unit: '元' },
+          { name: '接放学', img: '🚗', tag: '亲子', tagType: 'new', desc: '别人家小孩放学都有人接', count: 0, price: 0, unit: '元' },
+          { name: '陪你看电影', img: '🎬', tag: '限时', tagType: 'new', desc: '你选片，不许剧透不许催快进', count: 0, price: 0, unit: '元' },
+          { name: '夜晚散步', img: '🌙', tag: '浪漫', tagType: 'love', desc: '校园里随便走，边走边聊', count: 0, price: 0, unit: '元' },
+          { name: '拼豆', img: '豆', tag: '创作', tagType: 'love', desc: '一个小屋一待就是一天', count: 0, price: 0, unit: '元' }
+        ]
+      },
         {
             id: 'c9', name: '充电局', emoji: '📚',
             dishes: [
