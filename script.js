@@ -65,8 +65,7 @@ const state = {
                 { name: '打蛋仔派对', img: '🥚', tag: '最爱', tagType: 'love', desc: '小红保驾护航，输了算我炸单', count: 0 },
                 { name: '瓦', img: 'images/valorant.png?v=2', tag: '随缘', tagType: 'love', desc: 'fps界的低山臭水来了', count: 0 },
                 { name: '双人成行', img: 'images/ittakestwo.png?v=2', tag: '随缘', tagType: 'love', desc: '哪有打不过怪美甲的啊', count: 0 },
-                { name: '随便玩你选', img: '🎲', tag: '自由点', tagType: 'free', desc: '你说玩什么就玩什么，永远奉陪', count: 0 },
-                { name: '其他', img: '✨', tag: '自定义', tagType: 'free', desc: '想玩别的游戏？', count: 0 }
+                { name: '随便玩你选', img: '🎲', tag: '自由点', tagType: 'free', desc: '你说玩什么就玩什么，永远奉陪', count: 0 }
             ]
         },
         {
