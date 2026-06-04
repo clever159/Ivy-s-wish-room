@@ -76,7 +76,7 @@ const state = {
                 { name: '湖边坐着发呆', img: '🌊', tag: '情侣套餐', tagType: 'love', desc: '挑眉emoji', count: 0 },
                 { name: '逛街（背包服务）', img: '🛍️', tag: '体力活', tagType: 'hot', desc: '在我手上试妆ba', count: 0 },
                 { name: '陪你看电影', img: '🎬', tag: '限时', tagType: 'new', desc: '看电影有点暧昧了', count: 0 },
-                { name: '拼豆', img: 'o((⊙﹏⊙))o.', tag: '创意', tagType: 'new', desc: '一个屋子一待就是一天', count: 0 },
+                { name: '拼豆', img: 'images/pindou.png?v=2', tag: '创意', tagType: 'new', desc: '一个屋子一待就是一天', count: 0 },
                 { name: '夜晚散步', img: '🌙', tag: '浪漫', tagType: 'love', desc: '这项有点多余', count: 0 },
                 { name: '接放学', img: 'images/qinzi.png?v=2', tag: '亲子', tagType: 'love', desc: '别的小孩儿放学都有人接', count: 0 },
                 { name: '其他', img: '✨', tag: '自定义', tagType: 'free', desc: '有别的约会计划？', count: 0 }
@@ -87,7 +87,7 @@ const state = {
             dishes: [
                 { name: '一起自习', img: '📖', tag: '高效', tagType: 'free', desc: '', count: 0 },
                 { name: '不开心', img: 'images/sad.png?v=2', tag: 'emo', tagType: 'rare', desc: '找我聊天吧', count: 0 },
-                { name: '生气了，需要哄', img: '💆', tag: '呵护', tagType: 'love', desc: '想咬人的来', count: 0 },
+                { name: '生气了，需要哄', img: 'images/mad.png?v=2', tag: '呵护', tagType: 'love', desc: '想咬人的来', count: 0 },
                 { name: '需要静一静', img: 'images/quiet.png?v=2', count: 0 },
                 { name: '其他', img: '✨', tag: '自定义', tagType: 'free', desc: '有别的充电方式？', count: 0 }
             ]
